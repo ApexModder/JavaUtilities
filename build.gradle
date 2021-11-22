@@ -4,64 +4,110 @@ apply plugin: 'idea'
 apply plugin: 'maven-publish'
 
 group 'xyz.apex.java.utility'
-version '1.0-J8'
+version '1.0.0-J8'
 archivesBaseName = 'JavaUtilities'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
-    implementation 'com.google.code.findbugs:jsr305:3.0.2'
-    implementation 'com.google.code.gson:gson:2.8.0'
-    implementation 'com.google.guava:guava:21.0'
-    implementation 'commons-io:commons-io:2.5'
-    implementation 'commons-logging:commons-logging:1.1.3'
-    implementation 'org.apache.commons:commons-compress:1.8.1'
-    implementation 'org.apache.commons:commons-lang3:3.8.1'
-    implementation 'org.apache.httpcomponents:httpclient:4.3.3'
-    implementation 'org.apache.httpcomponents:httpcore:4.3.2'
-    implementation 'org.apache.logging.log4j:log4j-api:2.11.2'
-    implementation 'org.apache.logging.log4j:log4j-core:2.11.2'
+	implementation 'com.google.code.findbugs:jsr305:3.0.2'
+	implementation 'com.google.code.gson:gson:2.8.0'
+	implementation 'com.google.guava:guava:21.0'
+	implementation 'commons-io:commons-io:2.5'
+	implementation 'commons-logging:commons-logging:1.1.3'
+	implementation 'org.apache.commons:commons-compress:1.8.1'
+	implementation 'org.apache.commons:commons-lang3:3.8.1'
+	implementation 'org.apache.httpcomponents:httpclient:4.3.3'
+	implementation 'org.apache.httpcomponents:httpcore:4.3.2'
+	implementation 'org.apache.logging.log4j:log4j-api:2.11.2'
+	implementation 'org.apache.logging.log4j:log4j-core:2.11.2'
 }
 
 task sourcesJar(type: Jar) {
-    from sourceSets.main.allJava
+	classifier 'sources'
+	from sourceSets.main.allJava
 }
 
 task deobfJar(type: Jar) {
-    classifier 'deobf'
-    from sourceSets.main.output
+	classifier 'deobf'
+	from sourceSets.main.output
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier 'javadoc'
-    from javadoc.destinationDir
+	classifier 'javadoc'
+	from javadoc.destinationDir
 }
 
 artifacts {
-    archives jar
-    archives sourcesJar
-    archives deobfJar
-    archives javadocJar
+	archives jar
+	archives sourcesJar
+	archives deobfJar
+	archives javadocJar
 }
 
 jar {
-    from sourceSets.main.output.classesDirs
-    from sourceSets.main.output.resourcesDir
+	from sourceSets.main.output.classesDirs
+	from sourceSets.main.output.resourcesDir
 
-    manifest {
-        attributes([
-                'Specification-Title': 'JavaUtilities',
-                'Specification-Vendor': 'Apex',
-                'Specification-Version': 'JAVA_8',
+	manifest {
+		attributes([
+				'Specification-Title': "${archivesBaseName}",
+				'Specification-Vendor': 'Apex',
+				'Specification-Version': 'JAVA_8',
 
-                'Implementation-Title': 'JavaUtilities',
-                'Implementation-Version': "${project.version}",
-                'Implementation-Vendor' : 'Apex',
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
+				'Implementation-Title': "${archivesBaseName}",
+				'Implementation-Version': "${project.version}",
+				'Implementation-Vendor' : 'Apex',
+				'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+		])
+	}
+}
+
+publishing {
+	if(System.getenv('GITHUB_TOKEN') != null) {
+		publications {
+			gpr(MavenPublication) {
+				groupId "${group}"
+				artifactId "${archivesBaseName}"
+				version "${version}"
+
+				artifact jar
+				artifact sourcesJar
+				artifact deobfJar
+				artifact javadocJar
+			}
+		}
+
+		repositories {
+			maven {
+				name 'GitHubPackages'
+				url uri('https://maven.pkg.github.com/ApexModder/JavaUtilities')
+
+				credentials {
+					username System.getenv('GITHUB_ACTOR')
+					password System.getenv('GITHUB_TOKEN')
+				}
+			}
+		}
+	} else {
+		publications {
+			mavenJava(MavenPublication) {
+				groupId "${group}"
+				artifactId "${archivesBaseName}"
+				version "${version}"
+
+				artifact jar
+				artifact sourcesJar
+				artifact deobfJar
+				artifact javadocJar
+			}
+		}
+		repositories {
+			mavenLocal()
+		}
+	}
 }

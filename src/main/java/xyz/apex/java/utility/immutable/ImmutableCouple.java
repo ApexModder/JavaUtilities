@@ -10,7 +10,7 @@ import xyz.apex.java.utility.tuple.Pair;
  * <br>
  * All <em>setter</em> methods will throw {@link UnsupportedOperationException} if called.
  *
- * @param <T> The base object type for both the <em>key & value</em> elements.
+ * @param <T> The base object type for both the <em>key {@literal &} value</em> elements.
  * @see Pair
  * @see Couple
  * @since 1.0.1-J8

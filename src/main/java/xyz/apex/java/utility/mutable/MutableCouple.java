@@ -8,7 +8,7 @@ import xyz.apex.java.utility.tuple.Pair;
  * <br>
  * This object is <b>Mutable</b>, this means all elements <b>can</b> be modified with no side effects.
  *
- * @param <T> The base object type for both the <em>key & value</em> elements.
+ * @param <T> The base object type for both the <em>key {@literal &} value</em> elements.
  * @see Pair
  * @see Couple
  * @since 1.0.1-J8

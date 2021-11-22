@@ -6,7 +6,7 @@ import xyz.apex.java.utility.mutable.MutableCouple;
 /**
  * Pair of 2 objects which have the same base type.
  *
- * @param <T> The base object type for both the <em>key & value</em> elements.
+ * @param <T> The base object type for both the <em>key {@literal &} value</em> elements.
  * @see Pair
  * @since 1.0.1-J8
  */
@@ -66,7 +66,7 @@ public interface Couple<T> extends Pair<T, T>
 	}
 
 	/**
-	 * Creates a new {@link Couple} where the given <em>value</em> element is both the <em>key & value</em> elements.
+	 * Creates a new {@link Couple} where the given <em>value</em> element is both the <em>key {@literal &} value</em> elements.
 	 *
 	 * @param value The <em>value</em> element of the built {@link Couple}.
 	 * @param <T> The base object type for the <em>key/value</em> element.
@@ -96,7 +96,7 @@ public interface Couple<T> extends Pair<T, T>
 	}
 
 	/**
-	 * Creates a new <b>Immutable</b> {@link Couple} where the given <em>value</em> element is both the <em>key & value</em> elements.
+	 * Creates a new <b>Immutable</b> {@link Couple} where the given <em>value</em> element is both the <em>key {@literal &} value</em> elements.
 	 *
 	 * @param value The <em>value</em> element of the built {@link Couple}.
 	 * @param <T> The base object type for the <em>key/value</em> element.

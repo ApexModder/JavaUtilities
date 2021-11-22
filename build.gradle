@@ -1,0 +1,56 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven-publish'
+
+group 'xyz.apex.java.utility'
+version '1.0-J8'
+archivesBaseName = 'JavaUtilities'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+}
+
+task deobfJar(type: Jar) {
+    classifier 'deobf'
+    from sourceSets.main.output
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives jar
+    archives sourcesJar
+    archives deobfJar
+    archives javadocJar
+}
+
+jar {
+    from sourceSets.main.output.classesDirs
+    from sourceSets.main.output.resourcesDir
+
+    manifest {
+        attributes([
+                'Specification-Title': 'JavaUtilities',
+                'Specification-Vendor': 'Apex',
+                'Specification-Version': 'JAVA_8',
+
+                'Implementation-Title': 'JavaUtilities',
+                'Implementation-Version': "${project.version}",
+                'Implementation-Vendor' : 'Apex',
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}

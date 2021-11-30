@@ -4,7 +4,7 @@ apply plugin: 'idea'
 apply plugin: 'maven-publish'
 
 group 'xyz.apex.java.utility'
-version '1.0.2-J8'
+version '1.0.3-J8'
 archivesBaseName = 'JavaUtilities'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)

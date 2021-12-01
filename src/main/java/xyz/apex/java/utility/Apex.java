@@ -135,7 +135,7 @@ public final class Apex
 	 * @return The newly built map
 	 * @since 1.0.4-J8
 	 */
-	public static <K, V> Map<K, V> makeMutableList(Map<K, V> map)
+	public static <K, V> Map<K, V> makeMutableMap(Map<K, V> map)
 	{
 		if(map instanceof ImmutableMap)
 			return Maps.newHashMap(map);

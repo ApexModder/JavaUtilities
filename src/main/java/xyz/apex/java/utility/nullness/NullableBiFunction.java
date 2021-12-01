@@ -20,11 +20,15 @@ public interface NullableBiFunction<@NullableType T, @NullableType U, @NullableT
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see BiFunction#apply(Object, Object)
 	 */
 	@Override
 	R apply(T t, U u);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see BiFunction#andThen(Function)
 	 */
 	default <@NullableType V> NullableBiFunction<T, U, V> andThen(NullableFunction<? super R, ? extends V> after)

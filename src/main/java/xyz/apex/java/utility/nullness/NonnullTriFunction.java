@@ -22,11 +22,15 @@ public interface NonnullTriFunction<@NonnullType A, @NonnullType B, @NonnullType
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see TriFunction#apply(Object, Object, Object)
 	 */
 	@Override
 	R apply(A a, B b, C c);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see TriFunction#andThen(Function)
 	 */
 	default <@NonnullType V> NonnullTriFunction<A, B, C, V> andThen(NonnullFunction<? super R, ? extends V> after)

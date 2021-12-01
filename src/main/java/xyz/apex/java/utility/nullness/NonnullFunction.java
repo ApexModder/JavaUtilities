@@ -19,11 +19,15 @@ public interface NonnullFunction<@NonnullType T, @NonnullType R> extends Functio
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see Function#apply(Object)
 	 */
 	@Override
 	R apply(T t);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see Function#compose(Function)
 	 */
 	default <@NonnullType V> NonnullFunction<V, R> compose(NonnullFunction<? super V, ? extends T> before)
@@ -33,6 +37,8 @@ public interface NonnullFunction<@NonnullType T, @NonnullType R> extends Functio
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see Function#andThen(Function)
 	 */
 	default <@NonnullType V> NonnullFunction<T, V> andThen(NonnullFunction<? super R, ? extends V> after)
@@ -42,6 +48,8 @@ public interface NonnullFunction<@NonnullType T, @NonnullType R> extends Functio
 	}
 
 	/**
+	 * @param <T> the type of the input and output objects to the function
+	 * @return a function that always returns its input argument
 	 * @see Function#identity()
 	 */
 	static <@NonnullType T> NonnullFunction<T, T> identity()

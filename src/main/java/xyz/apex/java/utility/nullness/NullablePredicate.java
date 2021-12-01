@@ -2,6 +2,7 @@ package xyz.apex.java.utility.nullness;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -18,12 +19,16 @@ public interface NullablePredicate<@NullableType T> extends Predicate<T>, Nullab
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see Predicate#test(Object)
 	 */
 	@Override
 	boolean test(T t);
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see Function#apply(Object)
 	 */
 	@Override
 	default Boolean apply(T t)
@@ -32,6 +37,8 @@ public interface NullablePredicate<@NullableType T> extends Predicate<T>, Nullab
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see Predicate#and(Predicate)
 	 */
 	default NullablePredicate<T> and(NullablePredicate<? super T> other)
@@ -41,6 +48,8 @@ public interface NullablePredicate<@NullableType T> extends Predicate<T>, Nullab
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see Predicate#or(Predicate)
 	 */
 	default NullablePredicate<T> or(NullablePredicate<? super T> other)

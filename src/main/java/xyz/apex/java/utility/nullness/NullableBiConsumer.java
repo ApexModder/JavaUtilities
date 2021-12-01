@@ -19,11 +19,15 @@ public interface NullableBiConsumer<@NullableType T, @NullableType U> extends Bi
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see BiConsumer#accept(Object, Object)
 	 */
 	@Override
 	void accept(T t, U u);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see BiConsumer#andThen(BiConsumer)
 	 */
 	default NullableBiConsumer<T, U> andThen(NullableBiConsumer<? super T, ? super U> after)

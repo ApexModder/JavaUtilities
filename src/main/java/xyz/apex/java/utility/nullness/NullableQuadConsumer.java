@@ -22,11 +22,15 @@ public interface NullableQuadConsumer<@NullableType A, @NullableType B, @Nullabl
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see QuadConsumer#accept(Object, Object, Object, Object)
 	 */
 	@Override
 	void accept(A a, B b, C c, D d);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see QuadConsumer#andThen(QuadConsumer)
 	 */
 	default NullableQuadConsumer<A, B, C, D> andThen(NullableQuadConsumer<? super A, ? super B, ? super C, ? super D> after)
@@ -40,6 +44,12 @@ public interface NullableQuadConsumer<@NullableType A, @NullableType B, @Nullabl
 	}
 
 	/**
+	 * @param <A> The type of first argument to the operation
+	 * @param <B> The type of second argument to the operation
+	 * @param <C> The type of third argument to the operation
+	 * @param <D> The type of fourth argument to the operation
+	 * @return Returns a consumer that does nothing when applied
+	 *
 	 * @see QuadConsumer#noop()
 	 */
 	static <@NullableType A, @NullableType B, @NullableType C, @NullableType D> NullableQuadConsumer<A, B, C, D> noop()

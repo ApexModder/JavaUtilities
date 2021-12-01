@@ -18,6 +18,8 @@ public interface NonnullSupplier<@NonnullType T> extends Supplier<T>
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see Supplier#get()
 	 */
 	@Override
 	T get();
@@ -39,6 +41,7 @@ public interface NonnullSupplier<@NonnullType T> extends Supplier<T>
 	 * Builds a supplier where an exception is thrown if the result is null (with the specified error message)
 	 *
 	 * @param supplier Supplier to be made nonnull
+	 * @param errorMessage error message to the passed to exception if the result is null
 	 * @param <T> The type of results supplied by this supplier
 	 * @return The newly built nonnull supplier
 	 * @since 1.0.0-J8

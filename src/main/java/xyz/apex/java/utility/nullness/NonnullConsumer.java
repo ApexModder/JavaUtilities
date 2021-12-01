@@ -18,11 +18,15 @@ public interface NonnullConsumer<@NonnullType T> extends Consumer<T>
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see Consumer#accept(Object)
 	 */
 	@Override
 	void accept(T t);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see Consumer#andThen(Consumer)
 	 */
 	default NonnullConsumer<T> andThen(NonnullConsumer<? super T> after)

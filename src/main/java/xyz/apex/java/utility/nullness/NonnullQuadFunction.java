@@ -23,11 +23,15 @@ public interface NonnullQuadFunction<@NonnullType A, @NonnullType B, @NonnullTyp
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see QuadFunction#apply(Object, Object, Object, Object)
 	 */
 	@Override
 	R apply(A a, B b, C c, D d);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see QuadFunction#andThen(Function)
 	 */
 	default <@NonnullType V> NonnullQuadFunction<A, B, C, D, V> andThen(NonnullFunction<? super R, ? extends V> after)

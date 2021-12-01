@@ -124,6 +124,8 @@ public interface Lazy<T> extends Supplier<T>
 
 		/**
 		 * {@inheritDoc}
+		 *
+		 * @see Lazy#get()
 		 */
 		@Nullable
 		@Override
@@ -140,6 +142,8 @@ public interface Lazy<T> extends Supplier<T>
 
 		/**
 		 * {@inheritDoc}
+		 *
+		 * @see Lazy#invalidate()
 		 */
 		@Override
 		public void invalidate()
@@ -174,6 +178,8 @@ public interface Lazy<T> extends Supplier<T>
 
 		/**
 		 * {@inheritDoc}
+		 *
+		 * @see Lazy#get()
 		 */
 		@Nullable
 		@Override
@@ -198,6 +204,8 @@ public interface Lazy<T> extends Supplier<T>
 
 		/**
 		 * {@inheritDoc}
+		 *
+		 * @see Lazy#invalidate()
 		 */
 		@Override
 		public void invalidate()
@@ -229,6 +237,8 @@ public interface Lazy<T> extends Supplier<T>
 
 		/**
 		 * {@inheritDoc}
+		 *
+		 * @see Lazy#get()
 		 */
 		@Override
 		public T get()
@@ -244,6 +254,8 @@ public interface Lazy<T> extends Supplier<T>
 
 		/**
 		 * {@inheritDoc}
+		 *
+		 * @see Lazy#invalidate()
 		 */
 		@Override
 		public void invalidate()
@@ -278,6 +290,8 @@ public interface Lazy<T> extends Supplier<T>
 
 		/**
 		 * {@inheritDoc}
+		 *
+		 * @see Lazy#get()
 		 */
 		@Override
 		public T get()
@@ -301,6 +315,8 @@ public interface Lazy<T> extends Supplier<T>
 
 		/**
 		 * {@inheritDoc}
+		 *
+		 * @see Lazy#invalidate()
 		 */
 		@Override
 		public void invalidate()

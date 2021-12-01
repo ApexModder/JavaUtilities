@@ -18,6 +18,8 @@ import java.util.function.UnaryOperator;
 public interface NullableUnaryOperator<@NullableType T> extends UnaryOperator<T>, NullableFunction<T, T>
 {
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see UnaryOperator#andThen(Function)
 	 */
 	default NullableUnaryOperator<T> andThen(NullableUnaryOperator<T> after)
@@ -27,6 +29,9 @@ public interface NullableUnaryOperator<@NullableType T> extends UnaryOperator<T>
 	}
 
 	/**
+	 * @param <T> the type of the input and output objects to the function
+	 * @return a function that always returns its input argument
+	 *
 	 * @see UnaryOperator#identity()
 	 */
 	static <@NullableType T> NullableUnaryOperator<T> identity()

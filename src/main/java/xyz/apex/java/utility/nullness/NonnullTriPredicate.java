@@ -21,12 +21,16 @@ public interface NonnullTriPredicate<@NonnullType A, @NonnullType B, @NonnullTyp
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see TriPredicate#test(Object, Object, Object)
 	 */
 	@Override
 	boolean test(A a, B b, C c);
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see TriPredicate#apply(Object, Object, Object)
 	 */
 	@Override
 	default Boolean apply(A a, B b, C c)
@@ -35,6 +39,8 @@ public interface NonnullTriPredicate<@NonnullType A, @NonnullType B, @NonnullTyp
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see TriPredicate#and(TriPredicate)
 	 */
 	default NonnullTriPredicate<A, B, C> and(NonnullTriPredicate<? super A, ? super B, ? super C> other)
@@ -44,6 +50,8 @@ public interface NonnullTriPredicate<@NonnullType A, @NonnullType B, @NonnullTyp
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see TriPredicate#negate()
 	 */
 	default NonnullTriPredicate<A, B, C> negate()
@@ -52,6 +60,8 @@ public interface NonnullTriPredicate<@NonnullType A, @NonnullType B, @NonnullTyp
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see TriPredicate#or(TriPredicate)
 	 */
 	default NonnullTriPredicate<A, B, C> or(NonnullTriPredicate<? super A, ? super B, ? super C> other)

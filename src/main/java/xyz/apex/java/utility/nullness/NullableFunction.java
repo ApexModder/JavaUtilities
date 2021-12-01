@@ -19,11 +19,15 @@ public interface NullableFunction<@NullableType T, @NullableType R> extends Func
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see Function#apply(Object)
 	 */
 	@Override
 	R apply(T t);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see Function#compose(Function)
 	 */
 	default <@NullableType V> NullableFunction<V, R> compose(NullableFunction<? super V, ? extends T> before)
@@ -33,6 +37,8 @@ public interface NullableFunction<@NullableType T, @NullableType R> extends Func
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see Function#andThen(Function)
 	 */
 	default <@NullableType V> NullableFunction<T, V> andThen(NullableFunction<? super R, ? extends V> after)
@@ -42,6 +48,9 @@ public interface NullableFunction<@NullableType T, @NullableType R> extends Func
 	}
 
 	/**
+	 * @param <T> the type of the input and output objects to the function
+	 * @return a function that always returns its input argument
+	 *
 	 * @see Function#identity()
 	 */
 	static <@NullableType T> NullableFunction<T, T> identity()

@@ -21,11 +21,15 @@ public interface NonnullTriConsumer<@NonnullType A, @NonnullType B, @NonnullType
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see TriConsumer#accept(Object, Object, Object)
 	 */
 	@Override
 	void accept(A a, B b, C c);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see TriConsumer#andThen(TriConsumer)
 	 */
 	default NonnullTriConsumer<A, B, C> andThen(NonnullTriConsumer<? super A, ? super B, ? super C> after)
@@ -39,6 +43,11 @@ public interface NonnullTriConsumer<@NonnullType A, @NonnullType B, @NonnullType
 	}
 
 	/**
+	 * @param <A> The type of first argument to the operation
+	 * @param <B> The type of second argument to the operation
+	 * @param <C> The type of third argument to the operation
+	 * @return Returns a consumer that does nothing when applied
+	 *
 	 * @see TriConsumer#noop()
 	 */
 	static <@NonnullType A, @NonnullType B, @NonnullType C> NonnullTriConsumer<A, B, C> noop()

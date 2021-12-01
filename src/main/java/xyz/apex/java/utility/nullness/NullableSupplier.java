@@ -18,6 +18,8 @@ public interface NullableSupplier<@NullableType T> extends Supplier<T>
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see Supplier#get()
 	 */
 	@Override
 	T get();

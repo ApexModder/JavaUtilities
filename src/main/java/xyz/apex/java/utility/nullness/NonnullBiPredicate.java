@@ -2,6 +2,7 @@ package xyz.apex.java.utility.nullness;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
+import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 
 /**
@@ -19,12 +20,16 @@ public interface NonnullBiPredicate<@NonnullType T, @NonnullType U> extends BiPr
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see BiPredicate#test(Object, Object)
 	 */
 	@Override
 	boolean test(T t, U u);
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see BiFunction#apply(Object, Object)
 	 */
 	@Override
 	default Boolean apply(T t, U u)
@@ -33,6 +38,8 @@ public interface NonnullBiPredicate<@NonnullType T, @NonnullType U> extends BiPr
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see BiPredicate#and(BiPredicate)
 	 */
 	default NonnullBiPredicate<T, U> and(NonnullBiPredicate<? super T, ? super U> other)
@@ -42,6 +49,8 @@ public interface NonnullBiPredicate<@NonnullType T, @NonnullType U> extends BiPr
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see BiPredicate#or(BiPredicate)
 	 */
 	default NonnullBiPredicate<T, U> or(NonnullBiPredicate<? super T, ? super U> other)

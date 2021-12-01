@@ -19,11 +19,15 @@ public interface NonnullBiConsumer<@NonnullType T, @NonnullType U> extends BiCon
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see BiConsumer#accept(Object, Object)
 	 */
 	@Override
 	void accept(T t, U u);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see BiConsumer#andThen(BiConsumer)
 	 */
 	default NonnullBiConsumer<T, U> andThen(NonnullBiConsumer<? super T, ? super U> after)

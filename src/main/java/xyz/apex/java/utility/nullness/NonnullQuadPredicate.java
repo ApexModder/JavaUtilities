@@ -22,11 +22,15 @@ public interface NonnullQuadPredicate<@NonnullType A, @NonnullType B, @NonnullTy
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see QuadPredicate#test(Object, Object, Object, Object)
 	 */
 	boolean test(A a, B b, C c, D d);
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see QuadPredicate#apply(Object, Object, Object, Object)
 	 */
 	@Override
 	default Boolean apply(A a, B b, C c, D d)
@@ -35,6 +39,8 @@ public interface NonnullQuadPredicate<@NonnullType A, @NonnullType B, @NonnullTy
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see QuadPredicate#and(QuadPredicate)
 	 */
 	default NonnullQuadPredicate<A, B, C, D> and(NonnullQuadPredicate<? super A, ? super B, ? super C, ? super D> other)
@@ -44,6 +50,8 @@ public interface NonnullQuadPredicate<@NonnullType A, @NonnullType B, @NonnullTy
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see QuadPredicate#negate()
 	 */
 	default NonnullQuadPredicate<A, B, C, D> negate()
@@ -52,6 +60,8 @@ public interface NonnullQuadPredicate<@NonnullType A, @NonnullType B, @NonnullTy
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see QuadPredicate#or(QuadPredicate)
 	 */
 	default NonnullQuadPredicate<A, B, C, D> or(NonnullQuadPredicate<? super A, ? super B, ? super C, ? super D> other)

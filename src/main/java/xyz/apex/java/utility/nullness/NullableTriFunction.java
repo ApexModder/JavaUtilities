@@ -22,11 +22,15 @@ public interface NullableTriFunction<@NullableType A, @NullableType B, @Nullable
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see TriFunction#apply(Object, Object, Object)
 	 */
 	@Override
 	R apply(A a, B b, C c);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see TriFunction#andThen(Function)
 	 */
 	default <@NullableType V> NullableTriFunction<A, B, C, V> andThen(Function<? super R, ? extends V> after)

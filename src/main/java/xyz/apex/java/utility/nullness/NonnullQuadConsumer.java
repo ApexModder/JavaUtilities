@@ -22,11 +22,15 @@ public interface NonnullQuadConsumer<@NonnullType A, @NonnullType B, @NonnullTyp
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see QuadConsumer#accept(Object, Object, Object, Object)
 	 */
 	@Override
 	void accept(A a, B b, C c, D d);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see QuadConsumer#andThen(QuadConsumer)
 	 */
 	default NonnullQuadConsumer<A, B, C, D> andThen(NonnullQuadConsumer<? super A, ? super B, ? super C, ? super D> after)
@@ -40,6 +44,12 @@ public interface NonnullQuadConsumer<@NonnullType A, @NonnullType B, @NonnullTyp
 	}
 
 	/**
+	 * @param <A> The type of first argument to the operation
+	 * @param <B> The type of second argument to the operation
+	 * @param <C> The type of third argument to the operation
+	 * @param <D> The type of fourth argument to the operation
+	 * @return Returns a consumer that does nothing when applied
+	 *
 	 * @see QuadConsumer#noop()
 	 */
 	static <@NonnullType A, @NonnullType B, @NonnullType C, @NonnullType D> NonnullQuadConsumer<A, B, C, D> noop()

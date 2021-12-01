@@ -2,6 +2,7 @@ package xyz.apex.java.utility.nullness;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
+import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 
 /**
@@ -19,12 +20,16 @@ public interface NullableBiPredicate<@NullableType T, @NullableType U> extends B
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see BiPredicate#test(Object, Object)
 	 */
 	@Override
 	boolean test(T t, U u);
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see BiFunction#apply(Object, Object)
 	 */
 	@Override
 	default Boolean apply(T t, U u)
@@ -33,6 +38,8 @@ public interface NullableBiPredicate<@NullableType T, @NullableType U> extends B
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see BiPredicate#and(BiPredicate)
 	 */
 	default NullableBiPredicate<T, U> and(NullableBiPredicate<? super T, ? super U> other)
@@ -42,6 +49,8 @@ public interface NullableBiPredicate<@NullableType T, @NullableType U> extends B
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see BiPredicate#or(BiPredicate)
 	 */
 	default NullableBiPredicate<T, U> or(NullableBiPredicate<? super T, ? super U> other)

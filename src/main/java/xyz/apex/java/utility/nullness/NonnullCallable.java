@@ -17,6 +17,8 @@ public interface NonnullCallable<@NonnullType T> extends Callable<T>
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see Callable#call()
 	 */
 	@Override
 	T call() throws Exception;

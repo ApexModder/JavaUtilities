@@ -22,12 +22,16 @@ public interface NullableQuadPredicate<@NullableType A, @NullableType B, @Nullab
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see QuadPredicate#test(Object, Object, Object, Object)
 	 */
 	@Override
 	boolean test(A a, B b, C c, D d);
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see QuadPredicate#apply(Object, Object, Object, Object)
 	 */
 	@Override
 	default Boolean apply(A a, B b, C c, D d)
@@ -36,6 +40,8 @@ public interface NullableQuadPredicate<@NullableType A, @NullableType B, @Nullab
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see QuadPredicate#and(QuadPredicate)
 	 */
 	default NullableQuadPredicate<A, B, C, D> and(NullableQuadPredicate<? super A, ? super B, ? super C, ? super D> other)
@@ -45,6 +51,8 @@ public interface NullableQuadPredicate<@NullableType A, @NullableType B, @Nullab
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see QuadPredicate#or(QuadPredicate)
 	 */
 	default NullableQuadPredicate<A, B, C, D> or(NullableQuadPredicate<? super A, ? super B, ? super C, ? super D> other)

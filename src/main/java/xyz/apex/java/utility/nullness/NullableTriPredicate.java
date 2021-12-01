@@ -21,12 +21,16 @@ public interface NullableTriPredicate<@NullableType A, @NullableType B, @Nullabl
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see TriPredicate#test(Object, Object, Object)
 	 */
 	@Override
 	boolean test(A a, B b, C c);
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see TriPredicate#apply(Object, Object, Object)
 	 */
 	@Override
 	default Boolean apply(A a, B b, C c)
@@ -35,6 +39,8 @@ public interface NullableTriPredicate<@NullableType A, @NullableType B, @Nullabl
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see TriPredicate#and(TriPredicate)
 	 */
 	default NullableTriPredicate<A, B, C> and(NullableTriPredicate<? super A, ? super B, ? super C> other)
@@ -44,6 +50,8 @@ public interface NullableTriPredicate<@NullableType A, @NullableType B, @Nullabl
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see TriPredicate#or(TriPredicate)
 	 */
 	default NullableTriPredicate<A, B, C> or(NullableTriPredicate<? super A, ? super B, ? super C> other)

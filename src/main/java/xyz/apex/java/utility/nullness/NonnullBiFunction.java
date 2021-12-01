@@ -20,11 +20,15 @@ public interface NonnullBiFunction<@NonnullType T, @NonnullType U, @NonnullType 
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see BiFunction#apply(Object, Object)
 	 */
 	@Override
 	R apply(T t, U u);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see BiFunction#andThen(Function)
 	 */
 	default <@NonnullType V> NonnullBiFunction<T, U, V> andThen(NonnullFunction<? super R, ? extends V> after)

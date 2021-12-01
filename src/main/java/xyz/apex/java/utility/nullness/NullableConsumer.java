@@ -18,11 +18,15 @@ public interface NullableConsumer<@NullableType T> extends Consumer<T>
 {
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see Consumer#accept(Object)
 	 */
 	@Override
 	void accept(T t);
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see Consumer#andThen(Consumer)
 	 */
 	default NullableConsumer<T> andThen(NullableConsumer<? super T> after)

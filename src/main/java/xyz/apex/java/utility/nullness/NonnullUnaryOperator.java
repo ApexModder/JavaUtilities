@@ -18,6 +18,8 @@ import java.util.function.UnaryOperator;
 public interface NonnullUnaryOperator<@NonnullType T> extends UnaryOperator<T>, NonnullFunction<T, T>
 {
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @see UnaryOperator#andThen(Function)
 	 */
 	default NonnullUnaryOperator<T> andThen(NonnullUnaryOperator<T> after)
@@ -27,6 +29,9 @@ public interface NonnullUnaryOperator<@NonnullType T> extends UnaryOperator<T>, 
 	}
 
 	/**
+	 * @param <T> the type of the input and output objects to the function
+	 * @return a function that always returns its input argument
+	 *
 	 * @see UnaryOperator#identity()
 	 */
 	static <@NonnullType T> NonnullUnaryOperator<T> identity()

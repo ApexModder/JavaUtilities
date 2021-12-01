@@ -4,7 +4,7 @@ apply plugin: 'idea'
 apply plugin: 'maven-publish'
 
 group 'xyz.apex.java.utility'
-version '1.0.4.1-J8'
+version '1.0.5-J8'
 archivesBaseName = 'JavaUtilities'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
@@ -52,17 +52,19 @@ artifacts {
 jar {
 	from sourceSets.main.output.classesDirs
 	from sourceSets.main.output.resourcesDir
+}
 
+tasks.withType(Jar) {
 	manifest {
 		attributes([
-				'Specification-Title': "${archivesBaseName}",
+				'Specification-Title': 'Registrator',
 				'Specification-Vendor': 'Apex',
-				'Specification-Version': 'JAVA_8',
-
-				'Implementation-Title': "${archivesBaseName}",
+				'Specification-Version': '1',
+				'Implementation-Title': 'Regsitrator',
 				'Implementation-Version': "${project.version}",
 				'Implementation-Vendor' : 'Apex',
-				'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+				'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+				'MixinConfigs': 'registrator.mixins.json'
 		])
 	}
 }

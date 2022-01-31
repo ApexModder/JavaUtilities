@@ -4,7 +4,7 @@ apply plugin: 'idea'
 apply plugin: 'maven-publish'
 
 group 'xyz.apex.java.utility'
-version '1.0.6-J8'
+version '1.0.7-J8'
 archivesBaseName = 'JavaUtilities'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
@@ -37,16 +37,10 @@ task deobfJar(type: Jar) {
 	from sourceSets.main.output
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-	classifier 'javadoc'
-	from javadoc.destinationDir
-}
-
 artifacts {
 	archives jar
 	archives sourcesJar
 	archives deobfJar
-	archives javadocJar
 }
 
 jar {
@@ -81,7 +75,6 @@ publishing {
 				artifact jar
 				artifact sourcesJar
 				artifact deobfJar
-				artifact javadocJar
 			}
 		}
 
@@ -106,7 +99,6 @@ publishing {
 				artifact jar
 				artifact sourcesJar
 				artifact deobfJar
-				artifact javadocJar
 			}
 		}
 		repositories {

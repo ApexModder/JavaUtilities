@@ -4,10 +4,10 @@ apply plugin: 'idea'
 apply plugin: 'maven-publish'
 
 group 'xyz.apex.java.utility'
-version '1.0.6-J8'
+version '2.0.0-J8'
 archivesBaseName = 'JavaUtilities'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+java.toolchain.languageVersion = JavaLanguageVersion.of(16)
 
 repositories {
 	mavenCentral()
@@ -23,8 +23,8 @@ dependencies {
 	implementation 'org.apache.commons:commons-lang3:3.8.1'
 	implementation 'org.apache.httpcomponents:httpclient:4.3.3'
 	implementation 'org.apache.httpcomponents:httpcore:4.3.2'
-	implementation 'org.apache.logging.log4j:log4j-api:2.11.2'
-	implementation 'org.apache.logging.log4j:log4j-core:2.11.2'
+	implementation 'org.apache.logging.log4j:log4j-api:2.17.1'
+	implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
 }
 
 task sourcesJar(type: Jar) {
@@ -37,16 +37,10 @@ task deobfJar(type: Jar) {
 	from sourceSets.main.output
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-	classifier 'javadoc'
-	from javadoc.destinationDir
-}
-
 artifacts {
 	archives jar
 	archives sourcesJar
 	archives deobfJar
-	archives javadocJar
 }
 
 jar {
@@ -59,7 +53,7 @@ tasks.withType(Jar) {
 		attributes([
 				'Specification-Title': "${archivesBaseName}",
 				'Specification-Vendor': 'Apex',
-				'Specification-Version': 'JAVA_8',
+				'Specification-Version': 'JAVA_16',
 
 				'Implementation-Title': "${archivesBaseName}",
 				'Implementation-Version': "${project.version}",
@@ -81,7 +75,6 @@ publishing {
 				artifact jar
 				artifact sourcesJar
 				artifact deobfJar
-				artifact javadocJar
 			}
 		}
 
@@ -106,7 +99,6 @@ publishing {
 				artifact jar
 				artifact sourcesJar
 				artifact deobfJar
-				artifact javadocJar
 			}
 		}
 		repositories {

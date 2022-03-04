@@ -64,14 +64,6 @@ jobs:
           APEX_MODS_MAVEN_PASSWORD: ${{ secrets.APEX_MODS_MAVEN_PASSWORD }}
           RELEASE: ${{ steps.tagName.outputs.tag }}
 
-      # Publish GH release
-      - uses: softprops/action-gh-release@v1
-        id: ghRelease
-        with:
-          body: Auto-Generated GitHub Release - ${{ steps.tagName.outputs.tag }}
-          name: ${{ steps.tagName.outputs.tag }}
-          files: ./build/libs/*.jar
-
       # Kill gradlew deamon (caching requires gradle to not be running)
       - run: ./gradlew --stop
 

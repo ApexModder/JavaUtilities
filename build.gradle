@@ -4,7 +4,7 @@ apply plugin: 'idea'
 apply plugin: 'maven-publish'
 
 group 'xyz.apex.java.utility'
-version '3.0.1-J17'
+version '3.0.2-J17'
 archivesBaseName = 'JavaUtilities'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -68,8 +68,8 @@ if(System.getenv('APEX_MODS_MAVEN_USERNAME') != null && System.getenv('APEX_MODS
 		publications {
 			mavenJava(MavenPublication) {
 				groupId "${group}"
-				artifactId "${archivesBaseName}"
-				version "${version}"
+				artifactId "${archivesBaseName.toLowerCase(Locale.ROOT)}"
+				version "${version.toLowerCase(Locale.ROOT)}"
 
 				artifact jar
 				artifact sourcesJar

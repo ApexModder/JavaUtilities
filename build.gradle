@@ -63,35 +63,8 @@ tasks.withType(Jar) {
 	}
 }
 
-publishing {
-	if(System.getenv('GITHUB_TOKEN') != null) {
-		publications {
-			gpr(MavenPublication) {
-				groupId "${group}"
-				// GitHub Packages **require** names to be in lowercase
-				artifactId "${archivesBaseName.toLowerCase(Locale.ROOT)}"
-				version "${version.toLowerCase(Locale.ROOT)}"
-
-				artifact jar
-				artifact sourcesJar
-				artifact deobfJar
-			}
-		}
-
-		repositories {
-			maven {
-				name 'GitHubPackages'
-				url uri('https://maven.pkg.github.com/ApexModder/JavaUtilities')
-
-				credentials {
-					username System.getenv('GITHUB_ACTOR')
-					password System.getenv('GITHUB_TOKEN')
-				}
-			}
-		}
-	}
-
-	if(System.getenv('APEX_MODS_MAVEN_USERNAME') != null && System.getenv('APEX_MODS_MAVEN_PASSWORD') != null) {
+if(System.getenv('APEX_MODS_MAVEN_USERNAME') != null && System.getenv('APEX_MODS_MAVEN_PASSWORD') != null) {
+	publishing {
 		publications {
 			mavenJava(MavenPublication) {
 				groupId "${group}"

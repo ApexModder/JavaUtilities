@@ -1,3 +1,7 @@
+plugins {
+	id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '1.71.8'
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -48,7 +52,31 @@ jar {
 	from sourceSets.main.output.resourcesDir
 }
 
+def previousGitTag = { ->
+	def code = new ByteArrayOutputStream()
+
+	exec {
+		commandLine 'git', 'describe', '--tags', '--match', 'v*', '--exclude', "v${project.version}"
+		standardOutput code
+	}
+
+	return code.toString().trim().split('-')[0]
+}
+
+task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
+	file = file("CHANGELOG.md")
+	fromRepo = file('.')
+	fromRef = "${previousGitTag}"
+	// toRef = "v${project.version}"
+	templateContent = file('.github/changelog.mustache').text
+			.replace('{prj_version}', "${project.version}")
+			.replace('{last_tag}', "${previousGitTag}")
+}
+
 tasks.withType(Jar) {
+	from file('CHANGELOG.md')
+	from file('LICENSE')
+
 	manifest {
 		attributes([
 				'Specification-Title': "${archivesBaseName}",

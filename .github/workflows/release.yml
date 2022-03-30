@@ -39,6 +39,8 @@ jobs:
 
       # Generate Changelog
       - run: ./gradlew gitChangelogTask
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Build package
       - run: ./gradlew build

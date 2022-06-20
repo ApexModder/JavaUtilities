@@ -10,7 +10,6 @@ import xyz.apex.java.utility.tuple.Pair;
  * @param <K> The base object type for the <em>key</em> element.
  * @param <V> The base object type for the <em>value</em> element.
  * @see Pair
- * @since 1.0.1-J8
  */
 public class MutablePair<K, V> implements Pair<K, V>
 {
@@ -28,7 +27,6 @@ public class MutablePair<K, V> implements Pair<K, V>
 	 *
 	 * @param key The new <em>key</em> element value.
 	 * @return The old <em>key</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public K setKey(K key)
@@ -42,7 +40,6 @@ public class MutablePair<K, V> implements Pair<K, V>
 	 * Get the current <em>key</em> element value.
 	 *
 	 * @return The current <em>key</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public K getKey()
@@ -55,7 +52,6 @@ public class MutablePair<K, V> implements Pair<K, V>
 	 *
 	 * @param value The new <em>value</em> element value.
 	 * @return The old <em>value</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public V setValue(V value)
@@ -69,7 +65,6 @@ public class MutablePair<K, V> implements Pair<K, V>
 	 * Get the current <em>value</em> element value.
 	 *
 	 * @return The current <em>value</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public V getValue()

@@ -1,8 +1,9 @@
 package xyz.apex.java.utility.nullness;
 
+import org.jetbrains.annotations.Nullable;
+
 import xyz.apex.java.utility.function.QuadFunction;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -16,7 +17,6 @@ import java.util.function.Function;
  *
  * @see QuadFunction
  * @see Nullable
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface NullableQuadFunction<@NullableType A, @NullableType B, @NullableType C, @NullableType D, @NullableType R> extends QuadFunction<A, B, C, D, R>

@@ -8,18 +8,19 @@ apply plugin: 'idea'
 apply plugin: 'maven-publish'
 
 group 'xyz.apex.java.utility'
-version '3.0.2-J17'
+version '3.1.0-J17'
 archivesBaseName = 'JavaUtilities'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 repositories {
 	mavenCentral()
+	maven { url 'https://libraries.minecraft.net/' }
 }
 
 dependencies {
-	implementation 'com.google.code.findbugs:jsr305:3.0.2'
-	implementation 'com.google.code.gson:gson:2.8.8'
+	implementation 'org.jetbrains:annotations:23.0.0'
+	implementation 'com.google.code.gson:gson:2.8.9'
 	implementation 'com.google.guava:guava:31.0.1-jre'
 	implementation 'commons-io:commons-io:2.11.0'
 	implementation 'commons-logging:commons-logging:1.2'
@@ -29,6 +30,7 @@ dependencies {
 	implementation 'org.apache.httpcomponents:httpcore:4.4.14'
 	implementation 'org.apache.logging.log4j:log4j-api:2.17.1'
 	implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
+	implementation 'com.mojang:logging:1.0.0'
 }
 
 task sourcesJar(type: Jar) {

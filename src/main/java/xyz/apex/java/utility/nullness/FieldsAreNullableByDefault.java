@@ -1,6 +1,7 @@
 package xyz.apex.java.utility.nullness;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
+
 import javax.annotation.meta.TypeQualifierDefault;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -12,12 +13,11 @@ import java.lang.annotation.RetentionPolicy;
  * the fields in that element are nullable by default unless there is:
  * <ul>
  *     <li>An explicit nullness annotation
- *     <li>There is a default parameter annotation (like {@link FieldsAreNonnullByDefault})
+ *     <li>There is a default parameter annotation (like {@link FieldsAreNotNullByDefault})
  *     applied to a more tightly nested element.
  * </ul>
  *
  * @see Nullable
- * @since 1.0.0-J8
  */
 @Documented
 @Nullable

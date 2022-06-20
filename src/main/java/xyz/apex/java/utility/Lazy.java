@@ -1,11 +1,12 @@
 package xyz.apex.java.utility;
 
-import xyz.apex.java.utility.nullness.NonnullSupplier;
-import xyz.apex.java.utility.nullness.NonnullType;
+import org.jetbrains.annotations.Nullable;
+
+import xyz.apex.java.utility.nullness.NotNullSupplier;
+import xyz.apex.java.utility.nullness.NotNullType;
 import xyz.apex.java.utility.nullness.NullableSupplier;
 import xyz.apex.java.utility.nullness.NullableType;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.function.Supplier;
 
@@ -14,7 +15,6 @@ import java.util.function.Supplier;
  * and returns this same value until the lazy is invalidated using {@link #invalidate()}.
  *
  * @param <T> Type of value to lazily get.
- * @since 1.0.0-J8
  * @see Supplier
  */
 public interface Lazy<T> extends Supplier<T>
@@ -24,15 +24,12 @@ public interface Lazy<T> extends Supplier<T>
 	 *
 	 * @return Lazily obtained value from {@link Supplier}.
 	 * @see Supplier#get()
-	 * @since 1.0.0-J8
 	 */
 	@Override T get();
 
 	/**
 	 * Invalidates the {@link Lazy} object.
 	 * Future calls to {@link #get()} will try to retrieve and cache the value again.
-	 *
-	 * @since 1.0.0-J8
 	 */
 	void invalidate();
 
@@ -42,7 +39,6 @@ public interface Lazy<T> extends Supplier<T>
 	 * @param supplier The backing {@link NullableSupplier Supplier} used to retrieve values from.
 	 * @param concurrent Whether this {@link Lazy} should be concurrent or not (Thread safe).
 	 * @param <T> The backing object type for this {@link Lazy}.
-	 * @since 1.0.0-J8
 	 * @see Supplier
 	 * @see NullableSupplier
 	 * @return A new {@link Lazy} that allows null values.
@@ -58,7 +54,6 @@ public interface Lazy<T> extends Supplier<T>
 	 *
 	 * @param supplier The backing {@link NullableSupplier Supplier} used to retrieve values from.
 	 * @param <T> The backing object type for this {@link Lazy}.
-	 * @since 1.0.0-J8
 	 * @see Supplier
 	 * @see NullableSupplier
 	 * @see #ofNullable(NullableSupplier, boolean)
@@ -72,31 +67,29 @@ public interface Lazy<T> extends Supplier<T>
 	/**
 	 * Creates a new {@link Lazy} object whose resulting objects must never be null.
 	 *
-	 * @param supplier The backing {@link NonnullSupplier Supplier} used to retrieve values from.
+	 * @param supplier The backing {@link NotNullSupplier Supplier} used to retrieve values from.
 	 * @param concurrent Whether this {@link Lazy} should be concurrent or not (Thread safe).
 	 * @param <T> The backing object type for this {@link Lazy}.
-	 * @since 1.0.0-J8
 	 * @see Supplier
-	 * @see NonnullSupplier
+	 * @see NotNullSupplier
 	 * @return A new {@link Lazy} that does not allow null values.
 	 */
-	static <@NonnullType T> Lazy<T> of(NonnullSupplier<T> supplier, boolean concurrent)
+	static <@NotNullType T> Lazy<T> of(NotNullSupplier<T> supplier, boolean concurrent)
 	{
-		return concurrent ? new ConcurrentNonnullLazy<>(supplier) : new NonnullLazy<>(supplier);
+		return concurrent ? new ConcurrentNotNullLazy<>(supplier) : new NotNullLazy<>(supplier);
 	}
 
 	/**
 	 * Creates a new {@link Lazy} object whose resulting objects must never be null.
 	 * (This {@link Lazy} is not concurrent / thread safe).
 	 *
-	 * @param supplier The backing {@link NonnullSupplier Supplier} used to retrieve values from.
+	 * @param supplier The backing {@link NotNullSupplier Supplier} used to retrieve values from.
 	 * @param <T> The backing object type for this {@link Lazy}.
-	 * @since 1.0.0-J8
 	 * @see Supplier
-	 * @see NonnullSupplier
+	 * @see NotNullSupplier
 	 * @return A new {@link Lazy} that does not allow null values.
 	 */
-	static <@NonnullType T> Lazy<T> of(NonnullSupplier<T> supplier)
+	static <@NotNullType T> Lazy<T> of(NotNullSupplier<T> supplier)
 	{
 		return of(supplier, false);
 	}
@@ -108,9 +101,7 @@ public interface Lazy<T> extends Supplier<T>
 	 * @see Lazy
 	 * @see Supplier
 	 * @see NullableSupplier
-	 * @since 1.0.0-J8
 	 */
-	@SuppressWarnings("NullableProblems")
 	final class NullableLazy<T> implements Lazy<T>, NullableSupplier<T>
 	{
 		private final NullableSupplier<T> supplier;
@@ -161,9 +152,8 @@ public interface Lazy<T> extends Supplier<T>
 	 * @see NullableLazy
 	 * @see Supplier
 	 * @see NullableSupplier
-	 * @since 1.0.0-J8
 	 */
-	@SuppressWarnings({ "FieldMayBeFinal", "SynchronizationOnLocalVariableOrMethodParameter", "NullableProblems" })
+	@SuppressWarnings({ "FieldMayBeFinal", "SynchronizationOnLocalVariableOrMethodParameter" })
 	final class ConcurrentNullableLazy<T> implements Lazy<T>, NullableSupplier<T>
 	{
 		private volatile NullableSupplier<T> supplier;
@@ -221,16 +211,15 @@ public interface Lazy<T> extends Supplier<T>
 	 * @param <T> Type of value to lazily get.
 	 * @see Lazy
 	 * @see Supplier
-	 * @see NonnullSupplier
-	 * @since 1.0.0-J8
+	 * @see NotNullSupplier
 	 */
-	final class NonnullLazy<T> implements Lazy<T>, NonnullSupplier<T>
+	final class NotNullLazy<T> implements Lazy<T>, NotNullSupplier<T>
 	{
-		private final NonnullSupplier<T> supplier;
+		private final NotNullSupplier<T> supplier;
 		@Nullable private T instance = null;
 		private boolean initialized = false;
 
-		private NonnullLazy(NonnullSupplier<T> supplier)
+		private NotNullLazy(NotNullSupplier<T> supplier)
 		{
 			this.supplier = supplier;
 		}
@@ -266,24 +255,23 @@ public interface Lazy<T> extends Supplier<T>
 	}
 
 	/**
-	 * Concurrent (Thread safe) variant of {@link NonnullLazy}.
+	 * Concurrent (Thread safe) variant of {@link NotNullLazy}.
 	 *
 	 * @param <T> Type of value to lazily get.
 	 * @see Lazy
-	 * @see NonnullLazy
+	 * @see NotNullLazy
 	 * @see Supplier
-	 * @see NonnullLazy
-	 * @since 1.0.0-J8
+	 * @see NotNullLazy
 	 */
 	@SuppressWarnings({ "FieldMayBeFinal", "SynchronizationOnLocalVariableOrMethodParameter" })
-	final class ConcurrentNonnullLazy<T> implements Lazy<T>, NonnullSupplier<T>
+	final class ConcurrentNotNullLazy<T> implements Lazy<T>, NotNullSupplier<T>
 	{
-		private volatile NonnullSupplier<T> supplier;
+		private volatile NotNullSupplier<T> supplier;
 		@Nullable private volatile T instance = null;
 		private volatile boolean initialized = false;
 		private volatile Object lock = new Object();
 
-		private ConcurrentNonnullLazy(NonnullSupplier<T> supplier)
+		private ConcurrentNotNullLazy(NotNullSupplier<T> supplier)
 		{
 			this.supplier = supplier;
 		}

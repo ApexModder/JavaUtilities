@@ -1,21 +1,21 @@
 package xyz.apex.java.utility.nullness;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 import java.util.function.BiConsumer;
 
 /**
- * An alternative to {@link BiConsumer} where the inputs must always be nonnull
+ * An alternative to {@link BiConsumer} where the inputs must always be notnull
  *
  * @param <T> The type of the first argument to the operation
  * @param <U> The type of the second argument to the operation
  *
  * @see BiConsumer
- * @see Nonnull
- * @since 1.0.0-J8
+ * @see NotNull
  */
 @FunctionalInterface
-public interface NonnullBiConsumer<@NonnullType T, @NonnullType U> extends BiConsumer<T, U>
+public interface NotNullBiConsumer<@NotNullType T, @NotNullType U> extends BiConsumer<T, U>
 {
 	/**
 	 * {@inheritDoc}
@@ -30,7 +30,7 @@ public interface NonnullBiConsumer<@NonnullType T, @NonnullType U> extends BiCon
 	 *
 	 * @see BiConsumer#andThen(BiConsumer)
 	 */
-	default NonnullBiConsumer<T, U> andThen(NonnullBiConsumer<? super T, ? super U> after)
+	default NotNullBiConsumer<T, U> andThen(NotNullBiConsumer<? super T, ? super U> after)
 	{
 		Objects.requireNonNull(after);
 		return (t, u) -> {
@@ -46,9 +46,8 @@ public interface NonnullBiConsumer<@NonnullType T, @NonnullType U> extends BiCon
 	 * @param <U> The type of second argument to the operation
 	 *
 	 * @return Returns a consumer that does nothing when applied
-	 * @since 1.0.0-J8
 	 */
-	static <@NonnullType T, @NonnullType U> NonnullBiConsumer<T, U> noop()
+	static <@NotNullType T, @NotNullType U> NotNullBiConsumer<T, U> noop()
 	{
 		return (t, u) -> { };
 	}

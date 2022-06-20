@@ -1,21 +1,21 @@
 package xyz.apex.java.utility.nullness;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 import java.util.function.Function;
 
 /**
- * An alternative to {@link Function} where the input and result is must always be nonnull
+ * An alternative to {@link Function} where the input and result is must always be notnull
  *
  * @param <T> The type of the input to the operation
  * @param <R> The type of the result of the function
  *
  * @see Function
- * @see Nonnull
- * @since 1.0.0-J8
+ * @see NotNull
  */
 @FunctionalInterface
-public interface NonnullFunction<@NonnullType T, @NonnullType R> extends Function<T, R>
+public interface NotNullFunction<@NotNullType T, @NotNullType R> extends Function<T, R>
 {
 	/**
 	 * {@inheritDoc}
@@ -30,7 +30,7 @@ public interface NonnullFunction<@NonnullType T, @NonnullType R> extends Functio
 	 *
 	 * @see Function#compose(Function)
 	 */
-	default <@NonnullType V> NonnullFunction<V, R> compose(NonnullFunction<? super V, ? extends T> before)
+	default <@NotNullType V> NotNullFunction<V, R> compose(NotNullFunction<? super V, ? extends T> before)
 	{
 		Objects.requireNonNull(before);
 		return v -> apply(before.apply(v));
@@ -41,7 +41,7 @@ public interface NonnullFunction<@NonnullType T, @NonnullType R> extends Functio
 	 *
 	 * @see Function#andThen(Function)
 	 */
-	default <@NonnullType V> NonnullFunction<T, V> andThen(NonnullFunction<? super R, ? extends V> after)
+	default <@NotNullType V> NotNullFunction<T, V> andThen(NotNullFunction<? super R, ? extends V> after)
 	{
 		Objects.requireNonNull(after);
 		return t -> after.apply(apply(t));
@@ -52,7 +52,7 @@ public interface NonnullFunction<@NonnullType T, @NonnullType R> extends Functio
 	 * @return a function that always returns its input argument
 	 * @see Function#identity()
 	 */
-	static <@NonnullType T> NonnullFunction<T, T> identity()
+	static <@NotNullType T> NotNullFunction<T, T> identity()
 	{
 		return t -> t;
 	}

@@ -1,12 +1,13 @@
 package xyz.apex.java.utility.nullness;
 
+import org.jetbrains.annotations.NotNull;
+
 import xyz.apex.java.utility.function.QuadPredicate;
 
-import javax.annotation.Nonnull;
 import java.util.Objects;
 
 /**
- * An alternative to {@link QuadPredicate} where the inputs must always be nonnull
+ * An alternative to {@link QuadPredicate} where the inputs must always be notnull
  *
  * @param <A> The type of the first argument to the operation
  * @param <B> The type of the second argument to the operation
@@ -14,11 +15,10 @@ import java.util.Objects;
  * @param <D> The type of the third argument to the operation
  *
  * @see QuadPredicate
- * @see Nonnull
- * @since 1.0.0-J8
+ * @see NotNull
  */
 @FunctionalInterface
-public interface NonnullQuadPredicate<@NonnullType A, @NonnullType B, @NonnullType C, @NonnullType D> extends QuadPredicate<A, B, C, D>, NonnullQuadFunction<A, B, C, D, Boolean>
+public interface NotNullQuadPredicate<@NotNullType A, @NotNullType B, @NotNullType C, @NotNullType D> extends QuadPredicate<A, B, C, D>, NotNullQuadFunction<A, B, C, D, Boolean>
 {
 	/**
 	 * {@inheritDoc}
@@ -43,7 +43,7 @@ public interface NonnullQuadPredicate<@NonnullType A, @NonnullType B, @NonnullTy
 	 *
 	 * @see QuadPredicate#and(QuadPredicate)
 	 */
-	default NonnullQuadPredicate<A, B, C, D> and(NonnullQuadPredicate<? super A, ? super B, ? super C, ? super D> other)
+	default NotNullQuadPredicate<A, B, C, D> and(NotNullQuadPredicate<? super A, ? super B, ? super C, ? super D> other)
 	{
 		Objects.requireNonNull(other);
 		return (a, b, c, d) -> test(a, b, c, d) && other.test(a, b, c, d);
@@ -54,7 +54,7 @@ public interface NonnullQuadPredicate<@NonnullType A, @NonnullType B, @NonnullTy
 	 *
 	 * @see QuadPredicate#negate()
 	 */
-	default NonnullQuadPredicate<A, B, C, D> negate()
+	default NotNullQuadPredicate<A, B, C, D> negate()
 	{
 		return (a, b, c, d) -> !test(a, b, c, d);
 	}
@@ -64,7 +64,7 @@ public interface NonnullQuadPredicate<@NonnullType A, @NonnullType B, @NonnullTy
 	 *
 	 * @see QuadPredicate#or(QuadPredicate)
 	 */
-	default NonnullQuadPredicate<A, B, C, D> or(NonnullQuadPredicate<? super A, ? super B, ? super C, ? super D> other)
+	default NotNullQuadPredicate<A, B, C, D> or(NotNullQuadPredicate<? super A, ? super B, ? super C, ? super D> other)
 	{
 		Objects.requireNonNull(other);
 		return (a, b, c, d) -> test(a, b, c, d) || other.test(a, b, c, d);

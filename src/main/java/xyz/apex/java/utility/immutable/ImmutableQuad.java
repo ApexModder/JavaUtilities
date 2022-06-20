@@ -17,7 +17,6 @@ import xyz.apex.java.utility.tuple.Triple;
  * @see Pair
  * @see Triple
  * @see Quad
- * @since 1.0.1-J8
  */
 public class ImmutableQuad<A, B, C, D> extends ImmutableTriple<A, B, C> implements Quad<A, B, C, D>
 {
@@ -37,7 +36,6 @@ public class ImmutableQuad<A, B, C, D> extends ImmutableTriple<A, B, C> implemen
 	 * @return The old <em>first</em> element value.
 	 * @see Pair#setKey(Object)
 	 * @see Triple#setLeft(Object)
-	 * @since 1.0.1-J8
 	 * @throws UnsupportedOperationException Object is immutable, elements can not be modified
 	 */
 	@Override
@@ -50,7 +48,6 @@ public class ImmutableQuad<A, B, C, D> extends ImmutableTriple<A, B, C> implemen
 	 * Get the current <em>first</em> element value.
 	 *
 	 * @return The current <em>first</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public final A getFirst()
@@ -65,7 +62,6 @@ public class ImmutableQuad<A, B, C, D> extends ImmutableTriple<A, B, C> implemen
 	 * @return The old <em>second</em> element value.
 	 * @see Pair#setValue(Object)
 	 * @see Triple#setMiddle(Object)
-	 * @since 1.0.1-J8
 	 * @throws UnsupportedOperationException Object is immutable, elements can not be modified
 	 */
 	@Override
@@ -78,7 +74,6 @@ public class ImmutableQuad<A, B, C, D> extends ImmutableTriple<A, B, C> implemen
 	 * Get the current <em>second</em> element value.
 	 *
 	 * @return The current <em>second</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public final B getSecond()
@@ -92,7 +87,6 @@ public class ImmutableQuad<A, B, C, D> extends ImmutableTriple<A, B, C> implemen
 	 * @param third The new <em>third</em> element value.
 	 * @return The old <em>third</em> element value.
 	 * @see Triple#setRight(Object)
-	 * @since 1.0.1-J8
 	 * @throws UnsupportedOperationException Object is immutable, elements can not be modified
 	 */
 	@Override
@@ -105,7 +99,6 @@ public class ImmutableQuad<A, B, C, D> extends ImmutableTriple<A, B, C> implemen
 	 * Get the current <em>third</em> element value.
 	 *
 	 * @return The current <em>third</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public final C getThird()
@@ -118,7 +111,6 @@ public class ImmutableQuad<A, B, C, D> extends ImmutableTriple<A, B, C> implemen
 	 *
 	 * @param fourth The new <em>fourth</em> element value.
 	 * @return The old <em>fourth</em> element value.
-	 * @since 1.0.1-J8
 	 * @throws UnsupportedOperationException Object is immutable, elements can not be modified
 	 */
 	@Override
@@ -131,7 +123,6 @@ public class ImmutableQuad<A, B, C, D> extends ImmutableTriple<A, B, C> implemen
 	 * Get the current <em>fourth</em> element value.
 	 *
 	 * @return The current <em>fourth</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public final D getFourth()

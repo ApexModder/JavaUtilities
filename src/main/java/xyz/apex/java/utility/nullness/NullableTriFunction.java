@@ -1,8 +1,9 @@
 package xyz.apex.java.utility.nullness;
 
+import org.jetbrains.annotations.Nullable;
+
 import xyz.apex.java.utility.function.TriFunction;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -15,7 +16,6 @@ import java.util.function.Function;
  *
  * @see TriFunction
  * @see Nullable
- * @since 1.0.0-J8
  */
 @NullableType
 public interface NullableTriFunction<@NullableType A, @NullableType B, @NullableType C, @NullableType R> extends TriFunction<A, B, C, R>

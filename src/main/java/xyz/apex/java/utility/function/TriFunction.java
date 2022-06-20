@@ -15,7 +15,6 @@ import java.util.function.Function;
  * @param <RESULT> the type of the result of the function
  *
  * @see Function
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface TriFunction<A, B, C, RESULT>
@@ -27,7 +26,6 @@ public interface TriFunction<A, B, C, RESULT>
 	 * @param b the second function argument
 	 * @param c the third function argument
 	 * @return the function result
-	 * @since 1.0.0-J8
 	 */
 	RESULT apply(A a, B b, C c);
 
@@ -43,7 +41,6 @@ public interface TriFunction<A, B, C, RESULT>
 	 * @return a composed function that first applies this function and then
 	 * applies the {@code after} function
 	 * @throws NullPointerException if after is null
-	 * @since 1.0.0-J8
 	 */
 	default <RETURN> TriFunction<A, B, C, RETURN> andThen(Function<? super RESULT, ? extends RETURN> after)
 	{

@@ -1,24 +1,24 @@
 package xyz.apex.java.utility.nullness;
 
+import org.jetbrains.annotations.NotNull;
+
 import xyz.apex.java.utility.function.TriFunction;
 
-import javax.annotation.Nonnull;
 import java.util.Objects;
 import java.util.function.Function;
 
 /**
- * An alternative to {@link TriFunction} where the inputs must always be nonnull
+ * An alternative to {@link TriFunction} where the inputs must always be notnull
  *
  * @param <A> The type of the first argument to the operation
  * @param <B> The type of the second argument to the operation
  * @param <C> The type of the third argument to the operation
  *
  * @see TriFunction
- * @see Nonnull
- * @since 1.0.0-J8
+ * @see NotNull
  */
 @FunctionalInterface
-public interface NonnullTriFunction<@NonnullType A, @NonnullType B, @NonnullType C, @NonnullType R> extends TriFunction<A, B, C, R>
+public interface NotNullTriFunction<@NotNullType A, @NotNullType B, @NotNullType C, @NotNullType R> extends TriFunction<A, B, C, R>
 {
 	/**
 	 * {@inheritDoc}
@@ -33,7 +33,7 @@ public interface NonnullTriFunction<@NonnullType A, @NonnullType B, @NonnullType
 	 *
 	 * @see TriFunction#andThen(Function)
 	 */
-	default <@NonnullType V> NonnullTriFunction<A, B, C, V> andThen(NonnullFunction<? super R, ? extends V> after)
+	default <@NotNullType V> NotNullTriFunction<A, B, C, V> andThen(NotNullFunction<? super R, ? extends V> after)
 	{
 		Objects.requireNonNull(after);
 		return (a, b, c) -> after.apply(apply(a, b, c));

@@ -13,7 +13,6 @@ import xyz.apex.java.utility.tuple.Triple;
  * @param <R> The base object type for the <em>right</em> element.
  * @see Pair
  * @see Triple
- * @since 1.0.1-J8
  */
 public class MutableTriple<L, M, R> extends MutablePair<L, M> implements Triple<L, M, R>
 {
@@ -32,7 +31,6 @@ public class MutableTriple<L, M, R> extends MutablePair<L, M> implements Triple<
 	 * @param left The new <em>left</em> element value.
 	 * @return The old <em>left</em> element value.
 	 * @see Pair#setKey(Object)
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public L setLeft(L left)
@@ -44,7 +42,6 @@ public class MutableTriple<L, M, R> extends MutablePair<L, M> implements Triple<
 	 * Get the current <em>left</em> element value.
 	 *
 	 * @return The current <em>left</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public L getLeft()
@@ -59,7 +56,6 @@ public class MutableTriple<L, M, R> extends MutablePair<L, M> implements Triple<
 	 * @return The old <em>middle</em> element value.
 	 * @see Pair#setValue(Object)
 	 * @see #setMiddle(Object)
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public M setMiddle(M middle)
@@ -71,7 +67,6 @@ public class MutableTriple<L, M, R> extends MutablePair<L, M> implements Triple<
 	 * Get the current <em>middle</em> element value.
 	 *
 	 * @return The current <em>middle</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public M getMiddle()
@@ -84,7 +79,6 @@ public class MutableTriple<L, M, R> extends MutablePair<L, M> implements Triple<
 	 *
 	 * @param right The new <em>middle</em> element value.
 	 * @return The old <em>right</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public R setRight(R right)
@@ -98,7 +92,6 @@ public class MutableTriple<L, M, R> extends MutablePair<L, M> implements Triple<
 	 * Get the current <em>right</em> element value.
 	 *
 	 * @return The current <em>right</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public R getRight()

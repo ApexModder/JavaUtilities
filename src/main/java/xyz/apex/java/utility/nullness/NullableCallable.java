@@ -1,6 +1,7 @@
 package xyz.apex.java.utility.nullness;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.concurrent.Callable;
 
 /**
@@ -10,7 +11,6 @@ import java.util.concurrent.Callable;
  *
  * @see Callable
  * @see Nullable
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface NullableCallable<@NullableType T> extends Callable<T>

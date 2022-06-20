@@ -1,23 +1,23 @@
 package xyz.apex.java.utility.nullness;
 
+import org.jetbrains.annotations.NotNull;
+
 import xyz.apex.java.utility.function.TriConsumer;
 
-import javax.annotation.Nonnull;
 import java.util.Objects;
 
 /**
- * An alternative to {@link TriConsumer} where the inputs must always be nonnull
+ * An alternative to {@link TriConsumer} where the inputs must always be notnull
  *
  * @param <A> The type of the first argument to the operation
  * @param <B> The type of the second argument to the operation
  * @param <C> The type of the third argument to the operation
  *
  * @see TriConsumer
- * @see Nonnull
- * @since 1.0.0-J8
+ * @see NotNull
  */
 @FunctionalInterface
-public interface NonnullTriConsumer<@NonnullType A, @NonnullType B, @NonnullType C> extends TriConsumer<A, B, C>
+public interface NotNullTriConsumer<@NotNullType A, @NotNullType B, @NotNullType C> extends TriConsumer<A, B, C>
 {
 	/**
 	 * {@inheritDoc}
@@ -32,7 +32,7 @@ public interface NonnullTriConsumer<@NonnullType A, @NonnullType B, @NonnullType
 	 *
 	 * @see TriConsumer#andThen(TriConsumer)
 	 */
-	default NonnullTriConsumer<A, B, C> andThen(NonnullTriConsumer<? super A, ? super B, ? super C> after)
+	default NotNullTriConsumer<A, B, C> andThen(NotNullTriConsumer<? super A, ? super B, ? super C> after)
 	{
 		Objects.requireNonNull(after);
 
@@ -50,7 +50,7 @@ public interface NonnullTriConsumer<@NonnullType A, @NonnullType B, @NonnullType
 	 *
 	 * @see TriConsumer#noop()
 	 */
-	static <@NonnullType A, @NonnullType B, @NonnullType C> NonnullTriConsumer<A, B, C> noop()
+	static <@NotNullType A, @NotNullType B, @NotNullType C> NotNullTriConsumer<A, B, C> noop()
 	{
 		return (a, b, c) -> { };
 	}

@@ -11,7 +11,6 @@ import xyz.apex.java.utility.mutable.MutableQuad;
  * @param <C> The base object type for the <em>third</em> element.
  * @see Pair
  * @see Triple
- * @since 1.0.1-J8
  */
 public interface Quad<A, B, C, D> extends Triple<A, B, C>
 {
@@ -22,7 +21,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @return The old <em>first</em> element value.
 	 * @see Pair#setKey(Object)
 	 * @see Triple#setLeft(Object)
-	 * @since 1.0.1-J8
 	 */
 	A setFirst(A first);
 
@@ -34,7 +32,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @see Pair#setKey(Object)
 	 * @see Triple#setLeft(Object)
 	 * @see #setFirst(Object)
-	 * @since 1.0.1-J8
 	 */
 	@Override A setLeft(A first);
 
@@ -46,7 +43,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @see Pair#setKey(Object)
 	 * @see Triple#setLeft(Object)
 	 * @see #setFirst(Object)
-	 * @since 1.0.1-J8
 	 */
 	@Override A setKey(A first);
 
@@ -54,7 +50,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * Get the current <em>first</em> element value.
 	 *
 	 * @return The current <em>first</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	A getFirst();
 
@@ -65,7 +60,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @see Pair#getKey()
 	 * @see Triple#getLeft()
 	 * @see #getFirst()
-	 * @since 1.0.1-J8
 	 */
 	@Override A getLeft();
 
@@ -76,7 +70,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @see Pair#getKey()
 	 * @see Triple#getLeft()
 	 * @see #getFirst()
-	 * @since 1.0.1-J8
 	 */
 	@Override A getKey();
 
@@ -87,7 +80,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @return The old <em>second</em> element value.
 	 * @see Pair#setValue(Object)
 	 * @see Triple#setMiddle(Object)
-	 * @since 1.0.1-J8
 	 */
 	B setSecond(B second);
 
@@ -99,7 +91,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @see Pair#setValue(Object)
 	 * @see Triple#setMiddle(Object)
 	 * @see #setSecond(Object)
-	 * @since 1.0.1-J8
 	 */
 	@Override B setMiddle(B second);
 
@@ -111,7 +102,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @see Pair#setValue(Object)
 	 * @see Triple#setMiddle(Object)
 	 * @see #setSecond(Object)
-	 * @since 1.0.1-J8
 	 */
 	@Override B setValue(B second);
 
@@ -119,7 +109,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * Get the current <em>second</em> element value.
 	 *
 	 * @return The current <em>second</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	B getSecond();
 
@@ -130,7 +119,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @see Pair#getValue()
 	 * @see Triple#getMiddle()
 	 * @see #getSecond()
-	 * @since 1.0.1-J8
 	 */
 	@Override B getMiddle();
 
@@ -141,7 +129,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @see Pair#getValue()
 	 * @see Triple#getMiddle()
 	 * @see #getSecond()
-	 * @since 1.0.1-J8
 	 */
 	@Override B getValue();
 
@@ -151,7 +138,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @param third The new <em>third</em> element value.
 	 * @return The old <em>third</em> element value.
 	 * @see Triple#setRight(Object)
-	 * @since 1.0.1-J8
 	 */
 	C setThird(C third);
 
@@ -162,7 +148,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @return The old <em>third</em> element value.
 	 * @see Triple#setRight(Object)
 	 * @see #setThird(Object)
-	 * @since 1.0.1-J8
 	 */
 	@Override C setRight(C third);
 
@@ -170,7 +155,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * Get the current <em>third</em> element value.
 	 *
 	 * @return The current <em>third</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	C getThird();
 
@@ -180,7 +164,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @return The current <em>third</em> element value.
 	 * @see Triple#getRight()
 	 * @see #getThird()
-	 * @since 1.0.1-J8
 	 */
 	@Override C getRight();
 
@@ -189,7 +172,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 *
 	 * @param fourth The new <em>fourth</em> element value.
 	 * @return The old <em>fourth</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	D setFourth(D fourth);
 
@@ -197,7 +179,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * Get the current <em>fourth</em> element value.
 	 *
 	 * @return The current <em>fourth</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	D getFourth();
 
@@ -214,7 +195,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @param <D> The base object type for the <em>fourth</em> element.
 	 * @return {@link Triple} built from the given <em>first, second, third, fourth</em> elements.
 	 * @see MutableQuad
-	 * @since 1.0.1-J8
 	 */
 	static <A, B, C, D> Quad<A, B, C, D> create(A first, B second, C third, D fourth)
 	{
@@ -234,7 +214,6 @@ public interface Quad<A, B, C, D> extends Triple<A, B, C>
 	 * @param <D> The base object type for the <em>fourth</em> element.
 	 * @return {@link Quad} built from the given <em>first, second, third, fourth</em> elements.
 	 * @see ImmutableQuad
-	 * @since 1.0.1-J8
 	 */
 	static <A, B, C, D> Quad<A, B, C, D> createImmutable(A first, B second, C third, D fourth)
 	{

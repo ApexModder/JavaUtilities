@@ -1,6 +1,7 @@
 package xyz.apex.java.utility.nullness;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
@@ -12,7 +13,6 @@ import java.util.function.UnaryOperator;
  *
  * @see UnaryOperator
  * @see Nullable
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface NullableUnaryOperator<@NullableType T> extends UnaryOperator<T>, NullableFunction<T, T>

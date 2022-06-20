@@ -1,2 +1,2 @@
-@MethodsReturnNonnullByDefault @ParametersAreNonnullByDefault @FieldsAreNonnullByDefault
+@MethodsReturnNotNullByDefault @ParametersAreNotNullByDefault @FieldsAreNotNullByDefault
 package xyz.apex.java.utility.nullness;

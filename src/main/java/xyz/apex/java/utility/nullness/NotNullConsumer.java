@@ -1,20 +1,20 @@
 package xyz.apex.java.utility.nullness;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
- * An alternative to {@link Consumer} where the input is must always be nonnull
+ * An alternative to {@link Consumer} where the input is must always be notnull
  *
  * @param <T> The type of the input to the operation
  *
  * @see Consumer
- * @see Nonnull
- * @since 1.0.0-J8
+ * @see NotNull
  */
 @FunctionalInterface
-public interface NonnullConsumer<@NonnullType T> extends Consumer<T>
+public interface NotNullConsumer<@NotNullType T> extends Consumer<T>
 {
 	/**
 	 * {@inheritDoc}
@@ -29,7 +29,7 @@ public interface NonnullConsumer<@NonnullType T> extends Consumer<T>
 	 *
 	 * @see Consumer#andThen(Consumer)
 	 */
-	default NonnullConsumer<T> andThen(NonnullConsumer<? super T> after)
+	default NotNullConsumer<T> andThen(NotNullConsumer<? super T> after)
 	{
 		Objects.requireNonNull(after);
 		return t -> {
@@ -43,9 +43,8 @@ public interface NonnullConsumer<@NonnullType T> extends Consumer<T>
 	 *
 	 * @param <T> The type of input to the operation
 	 * @return Returns a consumer that does nothing when applied
-	 * @since 1.0.0-J8
 	 */
-	static <@NonnullType T> NonnullConsumer<T> noop()
+	static <@NotNullType T> NotNullConsumer<T> noop()
 	{
 		return t -> { };
 	}

@@ -17,7 +17,6 @@ import java.util.function.Consumer;
  * @param <D> The type of the fourth argument to the operation
  *
  * @see Consumer
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface QuadConsumer<A, B, C, D>
@@ -29,7 +28,6 @@ public interface QuadConsumer<A, B, C, D>
 	 * @param b The type of the second argument to the operation
 	 * @param c The type of the third argument to the operation
 	 * @param d The type of the third argument to the operation
-	 * @since 1.0.0-J8
 	 */
 	void accept(A a, B b, C c, D d);
 
@@ -44,7 +42,6 @@ public interface QuadConsumer<A, B, C, D>
 	 * @return a composed {@code QuadConsumer} that performs in sequence this
 	 * operation followed by the {@code after} operation
 	 * @throws NullPointerException if {@code after} is null
-	 * @since 1.0.0-J8
 	 */
 	default QuadConsumer<A, B, C, D> andThen(QuadConsumer<? super A, ? super B, ? super C, ? super D> after)
 	{
@@ -65,7 +62,6 @@ public interface QuadConsumer<A, B, C, D>
 	 * @param <D> The type of fourth argument to the operation
 	 *
 	 * @return Returns a consumer that does nothing when applied
-	 * @since 1.0.0-J8
 	 */
 	static <A, B, C, D> QuadConsumer<A, B, C, D> noop()
 	{

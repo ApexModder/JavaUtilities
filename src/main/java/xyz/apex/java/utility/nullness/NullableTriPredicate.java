@@ -1,8 +1,9 @@
 package xyz.apex.java.utility.nullness;
 
+import org.jetbrains.annotations.Nullable;
+
 import xyz.apex.java.utility.function.TriPredicate;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
 
 /**
@@ -14,7 +15,6 @@ import java.util.Objects;
  *
  * @see TriPredicate
  * @see Nullable
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface NullableTriPredicate<@NullableType A, @NullableType B, @NullableType C> extends NullableTriFunction<A, B, C, Boolean>, TriPredicate<A, B, C>

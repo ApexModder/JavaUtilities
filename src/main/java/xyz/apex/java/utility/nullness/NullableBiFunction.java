@@ -1,6 +1,7 @@
 package xyz.apex.java.utility.nullness;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -13,7 +14,6 @@ import java.util.function.Function;
  *
  * @see BiFunction
  * @see Nullable
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface NullableBiFunction<@NullableType T, @NullableType U, @NullableType R> extends BiFunction<T, U, R>

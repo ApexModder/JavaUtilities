@@ -1,21 +1,21 @@
 package xyz.apex.java.utility.nullness;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * An alternative to {@link Predicate} where the input must always be nonnull
+ * An alternative to {@link Predicate} where the input must always be notnull
  *
  * @param <T> The type of the input to the operation
  *
  * @see Predicate
- * @see Nonnull
- * @since 1.0.0-J8
+ * @see NotNull
  */
 @FunctionalInterface
-public interface NonnullPredicate<@NonnullType T> extends Predicate<T>, NonnullFunction<T, Boolean>
+public interface NotNullPredicate<@NotNullType T> extends Predicate<T>, NotNullFunction<T, Boolean>
 {
 	/**
 	 * {@inheritDoc}
@@ -41,7 +41,7 @@ public interface NonnullPredicate<@NonnullType T> extends Predicate<T>, NonnullF
 	 *
 	 * @see Predicate#and(Predicate)
 	 */
-	default NonnullPredicate<T> and(NonnullPredicate<? super T> other)
+	default NotNullPredicate<T> and(NotNullPredicate<? super T> other)
 	{
 		Objects.requireNonNull(other);
 		return t -> test(t) && other.test(t);
@@ -52,7 +52,7 @@ public interface NonnullPredicate<@NonnullType T> extends Predicate<T>, NonnullF
 	 *
 	 * @see Predicate#or(Predicate)
 	 */
-	default NonnullPredicate<T> or(NonnullPredicate<? super T> other)
+	default NotNullPredicate<T> or(NotNullPredicate<? super T> other)
 	{
 		Objects.requireNonNull(other);
 		return t -> test(t) || other.test(t);

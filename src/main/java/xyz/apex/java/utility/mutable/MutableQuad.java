@@ -15,7 +15,6 @@ import xyz.apex.java.utility.tuple.Triple;
  * @see Pair
  * @see Triple
  * @see Quad
- * @since 1.0.1-J8
  */
 public class MutableQuad<A, B, C, D> extends MutableTriple<A, B, C> implements Quad<A, B, C, D>
 {
@@ -35,7 +34,6 @@ public class MutableQuad<A, B, C, D> extends MutableTriple<A, B, C> implements Q
 	 * @return The old <em>first</em> element value.
 	 * @see Pair#setKey(Object)
 	 * @see Triple#setLeft(Object)
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public A setFirst(A first)
@@ -47,8 +45,6 @@ public class MutableQuad<A, B, C, D> extends MutableTriple<A, B, C> implements Q
 	 * Get the current <em>first</em> element value.
 	 *
 	 * @return The current <em>first</em> element value.
-	 *
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public A getFirst()
@@ -63,7 +59,6 @@ public class MutableQuad<A, B, C, D> extends MutableTriple<A, B, C> implements Q
 	 * @return The old <em>second</em> element value.
 	 * @see Pair#setValue(Object)
 	 * @see Triple#setMiddle(Object)
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public B setSecond(B second)
@@ -75,7 +70,6 @@ public class MutableQuad<A, B, C, D> extends MutableTriple<A, B, C> implements Q
 	 * Get the current <em>second</em> element value.
 	 *
 	 * @return The current <em>second</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public B getSecond()
@@ -89,7 +83,6 @@ public class MutableQuad<A, B, C, D> extends MutableTriple<A, B, C> implements Q
 	 * @param third The new <em>third</em> element value.
 	 * @return The old <em>third</em> element value.
 	 * @see Triple#setRight(Object)
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public C setThird(C third)
@@ -101,7 +94,6 @@ public class MutableQuad<A, B, C, D> extends MutableTriple<A, B, C> implements Q
 	 * Get the current <em>third</em> element value.
 	 *
 	 * @return The current <em>third</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public C getThird()
@@ -114,7 +106,6 @@ public class MutableQuad<A, B, C, D> extends MutableTriple<A, B, C> implements Q
 	 *
 	 * @param fourth The new <em>fourth</em> element value.
 	 * @return The old <em>fourth</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public D setFourth(D fourth)
@@ -128,7 +119,6 @@ public class MutableQuad<A, B, C, D> extends MutableTriple<A, B, C> implements Q
 	 * Get the current <em>fourth</em> element value.
 	 *
 	 * @return The current <em>fourth</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	@Override
 	public D getFourth()

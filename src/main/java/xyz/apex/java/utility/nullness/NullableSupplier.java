@@ -1,6 +1,7 @@
 package xyz.apex.java.utility.nullness;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Objects;
 import java.util.function.Supplier;
 
@@ -11,7 +12,6 @@ import java.util.function.Supplier;
  *
  * @see Supplier
  * @see Nullable
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface NullableSupplier<@NullableType T> extends Supplier<T>
@@ -29,11 +29,10 @@ public interface NullableSupplier<@NullableType T> extends Supplier<T>
 	 *
 	 * @return a result, throws an exception if {@code null} is returned.
 	 * @throws NullPointerException if result is {@code null}
-	 * @since 1.0.0-J8
 	 */
-	default T getNonnull()
+	default T getNotNull()
 	{
-		return getNonnull(() -> "Unexpected null value from supplier");
+		return getNotNull(() -> "Unexpected null value from supplier");
 	}
 
 	/**
@@ -42,35 +41,32 @@ public interface NullableSupplier<@NullableType T> extends Supplier<T>
 	 * @param errorMessage message passed to thrown exception if result is {@code null}
 	 * @return a result, throws an exception if {@code null} is returned.
 	 * @throws NullPointerException if result is {@code null}
-	 * @since 1.0.0-J8
 	 */
-	default T getNonnull(NonnullSupplier<String> errorMessage)
+	default T getNotNull(NotNullSupplier<String> errorMessage)
 	{
 		return Objects.requireNonNull(get(), errorMessage);
 	}
 
 	/**
-	 * Converts this nullable supplier into a nonnull-able supplier
+	 * Converts this nullable supplier into a notnull-able supplier
 	 *
-	 * @return a nonnull-able supplier
+	 * @return a notnull-able supplier
 	 * @throws NullPointerException if result of supplier is ever {@code null}
-	 * @since 1.0.0-J8
 	 */
-	default NonnullSupplier<T> asNonnull()
+	default NotNullSupplier<T> asNotNull()
 	{
-		return this::getNonnull;
+		return this::getNotNull;
 	}
 
 	/**
-	 * Converts this nullable supplier into a nonnull-able supplier
+	 * Converts this nullable supplier into a notnull-able supplier
 	 *
 	 * @param errorMessage messaged passed to thrown exception if result is {@code null}
-	 * @return a nonnull-able supplier
+	 * @return a notnull-able supplier
 	 * @throws NullPointerException if result of supplier is ever {@code null}
-	 * @since 1.0.0-J8
 	 */
-	default NonnullSupplier<T> asNonnull(NonnullSupplier<String> errorMessage)
+	default NotNullSupplier<T> asNotNull(NotNullSupplier<String> errorMessage)
 	{
-		return () -> getNonnull(errorMessage);
+		return () -> getNotNull(errorMessage);
 	}
 }

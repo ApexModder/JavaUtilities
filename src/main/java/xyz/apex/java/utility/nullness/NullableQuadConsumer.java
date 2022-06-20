@@ -1,8 +1,9 @@
 package xyz.apex.java.utility.nullness;
 
+import org.jetbrains.annotations.Nullable;
+
 import xyz.apex.java.utility.function.QuadConsumer;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
 
 /**
@@ -15,7 +16,6 @@ import java.util.Objects;
  *
  * @see QuadConsumer
  * @see Nullable
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface NullableQuadConsumer<@NullableType A, @NullableType B, @NullableType C, @NullableType D> extends QuadConsumer<A, B, C, D>

@@ -16,7 +16,6 @@ import java.util.function.Function;
  * @param <RESULT> the type of the result of the function
  *
  * @see Function
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface QuadFunction<A, B, C, D, RESULT>
@@ -29,7 +28,6 @@ public interface QuadFunction<A, B, C, D, RESULT>
 	 * @param c the third function argument
 	 * @param d the fourth function argument
 	 * @return the function result
-	 * @since 1.0.0-J8
 	 */
 	RESULT apply(A a, B b, C c, D d);
 
@@ -45,7 +43,6 @@ public interface QuadFunction<A, B, C, D, RESULT>
 	 * @return a composed function that first applies this function and then
 	 * applies the {@code after} function
 	 * @throws NullPointerException if after is null
-	 * @since 1.0.0-J8
 	 */
 	default <RETURN> QuadFunction<A, B, C, D, RETURN> andThen(Function<? super RESULT, ? extends RETURN> after)
 	{

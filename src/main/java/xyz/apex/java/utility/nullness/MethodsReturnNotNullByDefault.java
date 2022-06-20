@@ -1,6 +1,7 @@
 package xyz.apex.java.utility.nullness;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
+
 import javax.annotation.meta.TypeQualifierDefault;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -9,7 +10,7 @@ import java.lang.annotation.RetentionPolicy;
 
 /**
  * This annotation can be applied to a package, class or method to indicate that
- * the methods in that element return nonnull by default unless there is:
+ * the methods in that element return notnull by default unless there is:
  * <ul>
  *     <li>An explicit nullness annotation
  *     <li>The method overrides a method in a superclass (in which case the
@@ -18,12 +19,11 @@ import java.lang.annotation.RetentionPolicy;
  *     applied to a more tightly nested element.
  * </ul>
  *
- * @see Nonnull
- * @since 1.0.0-J8
+ * @see NotNull
  */
 @Documented
-@Nonnull
+@NotNull
 @TypeQualifierDefault(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface MethodsReturnNonnullByDefault
+public @interface MethodsReturnNotNullByDefault
 { }

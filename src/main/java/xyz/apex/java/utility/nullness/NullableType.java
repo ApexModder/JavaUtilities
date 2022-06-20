@@ -1,11 +1,11 @@
 package xyz.apex.java.utility.nullness;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
+
 import java.lang.annotation.*;
 
 /**
  * An alternative to {@link Nullable} which works on type parameters (J8 feature).
- * @since 1.0.0-J8
  */
 @Documented
 @Nullable

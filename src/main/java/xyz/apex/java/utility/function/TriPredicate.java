@@ -12,7 +12,6 @@ import java.util.function.Predicate;
  * @param <A> the type of the first argument to the predicate
  * @param <B> the type of the second argument to the predicate
  * @param <C> the type of the third argument to the predicate
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface TriPredicate<A, B, C> extends TriFunction<A, B, C, Boolean>
@@ -25,7 +24,6 @@ public interface TriPredicate<A, B, C> extends TriFunction<A, B, C, Boolean>
 	 * @param c the third input argument
 	 * @return {@code true} if the input arguments match the predicate,
 	 * otherwise {@code false}
-	 * @since 1.0.0-J8
 	 */
 	boolean test(A a, B b, C c);
 
@@ -35,7 +33,6 @@ public interface TriPredicate<A, B, C> extends TriFunction<A, B, C, Boolean>
 	 * Wraps into {@link #test(Object, Object, Object)}
 	 *
 	 * @see TriFunction#apply(Object, Object, Object)
-	 * @since 1.0.0-J8
 	 */
 	@Override
 	default Boolean apply(A a, B b, C c)
@@ -58,7 +55,6 @@ public interface TriPredicate<A, B, C> extends TriFunction<A, B, C, Boolean>
 	 * @return a composed predicate that represents the short-circuiting logical
 	 * AND of this predicate and the {@code other} predicate
 	 * @throws NullPointerException if other is null
-	 * @since 1.0.0-J8
 	 */
 	default TriPredicate<A, B, C> and(TriPredicate<? super A, ? super B, ? super C> other)
 	{
@@ -72,7 +68,6 @@ public interface TriPredicate<A, B, C> extends TriFunction<A, B, C, Boolean>
 	 *
 	 * @return a predicate that represents the logical negation of this
 	 * predicate
-	 * @since 1.0.0-J8
 	 */
 	default TriPredicate<A, B, C> negate()
 	{
@@ -94,7 +89,6 @@ public interface TriPredicate<A, B, C> extends TriFunction<A, B, C, Boolean>
 	 * @return a composed predicate that represents the short-circuiting logical
 	 * OR of this predicate and the {@code other} predicate
 	 * @throws NullPointerException if other is null
-	 * @since 1.0.0-J8
 	 */
 	default TriPredicate<A, B, C> or(TriPredicate<? super A, ? super B, ? super C> other)
 	{

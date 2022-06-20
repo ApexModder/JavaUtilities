@@ -8,7 +8,6 @@ import xyz.apex.java.utility.mutable.MutablePair;
  *
  * @param <K> The base object type for the <em>key</em> element.
  * @param <V> The base object type for the <em>value</em> element.
- * @since 1.0.1-J8
  */
 public interface Pair<K, V>
 {
@@ -17,7 +16,6 @@ public interface Pair<K, V>
 	 *
 	 * @param key The new <em>key</em> element value.
 	 * @return The old <em>key</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	K setKey(K key);
 
@@ -25,7 +23,6 @@ public interface Pair<K, V>
 	 * Get the current <em>key</em> element value.
 	 *
 	 * @return The current <em>key</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	K getKey();
 
@@ -34,7 +31,6 @@ public interface Pair<K, V>
 	 *
 	 * @param value The new <em>value</em> element value.
 	 * @return The old <em>value</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	V setValue(V value);
 
@@ -42,7 +38,6 @@ public interface Pair<K, V>
 	 * Get the current <em>value</em> element value.
 	 *
 	 * @return The current <em>value</em> element value.
-	 * @since 1.0.1-J8
 	 */
 	V getValue();
 
@@ -55,7 +50,6 @@ public interface Pair<K, V>
 	 * @param <V> The base object type for the <em>value</em> element.
 	 * @return {@link Pair} built from the given <em>key, value</em> elements.
 	 * @see MutablePair
-	 * @since 1.0.1-J8
 	 */
 	static <K, V> Pair<K, V> create(K key, V value)
 	{
@@ -71,7 +65,6 @@ public interface Pair<K, V>
 	 * @param <V> The base object type for the <em>value</em> element.
 	 * @return {@link Pair} built from the given <em>key, value</em> elements.
 	 * @see ImmutablePair
-	 * @since 1.0.1-J8
 	 */
 	static <K, V> Pair<K, V> createImmutable(K key, V value)
 	{

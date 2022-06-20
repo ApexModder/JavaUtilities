@@ -13,7 +13,6 @@ import java.util.function.Predicate;
  * @param <B> the type of the second argument to the predicate
  * @param <C> the type of the third argument to the predicate
  * @param <D> the type of the fourth argument to the predicate
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface QuadPredicate<A, B, C, D> extends QuadFunction<A, B, C, D, Boolean>
@@ -27,7 +26,6 @@ public interface QuadPredicate<A, B, C, D> extends QuadFunction<A, B, C, D, Bool
 	 * @param d the fourth input argument
 	 * @return {@code true} if the input arguments match the predicate,
 	 * otherwise {@code false}
-	 * @since 1.0.0-J8
 	 */
 	boolean test(A a, B b, C c, D d);
 
@@ -37,7 +35,6 @@ public interface QuadPredicate<A, B, C, D> extends QuadFunction<A, B, C, D, Bool
 	 * Wraps into {@link #test(Object, Object, Object, Object)}
 	 *
 	 * @see QuadFunction#apply(Object, Object, Object, Object)
-	 * @since 1.0.0-J8
 	 */
 	@Override
 	default Boolean apply(A a, B b, C c, D d)
@@ -60,7 +57,6 @@ public interface QuadPredicate<A, B, C, D> extends QuadFunction<A, B, C, D, Bool
 	 * @return a composed predicate that represents the short-circuiting logical
 	 * AND of this predicate and the {@code other} predicate
 	 * @throws NullPointerException if other is null
-	 * @since 1.0.0-J8
 	 */
 	default QuadPredicate<A, B, C, D> and(QuadPredicate<? super A, ? super B, ? super C, ? super D> other)
 	{
@@ -74,7 +70,6 @@ public interface QuadPredicate<A, B, C, D> extends QuadFunction<A, B, C, D, Bool
 	 *
 	 * @return a predicate that represents the logical negation of this
 	 * predicate
-	 * @since 1.0.0-J8
 	 */
 	default QuadPredicate<A, B, C, D> negate()
 	{
@@ -96,7 +91,6 @@ public interface QuadPredicate<A, B, C, D> extends QuadFunction<A, B, C, D, Bool
 	 * @return a composed predicate that represents the short-circuiting logical
 	 * OR of this predicate and the {@code other} predicate
 	 * @throws NullPointerException if other is null
-	 * @since 1.0.0-J8
 	 */
 	default QuadPredicate<A, B, C, D> or(QuadPredicate<? super A, ? super B, ? super C, ? super D> other)
 	{

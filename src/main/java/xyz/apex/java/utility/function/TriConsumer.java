@@ -16,7 +16,6 @@ import java.util.function.Consumer;
  * @param <C> The type of the third argument to the operation
  *
  * @see Consumer
- * @since 1.0.0-J8
  */
 @FunctionalInterface
 public interface TriConsumer<A, B, C>
@@ -27,7 +26,6 @@ public interface TriConsumer<A, B, C>
 	 * @param a The type of the first argument to the operation
 	 * @param b The type of the second argument to the operation
 	 * @param c The type of the third argument to the operation
-	 * @since 1.0.0-J8
 	 */
 	void accept(A a, B b, C c);
 
@@ -42,7 +40,6 @@ public interface TriConsumer<A, B, C>
 	 * @return a composed {@code TriConsumer} that performs in sequence this
 	 * operation followed by the {@code after} operation
 	 * @throws NullPointerException if {@code after} is null
-	 * @since 1.0.0-J8
 	 */
 	default TriConsumer<A, B, C> andThen(TriConsumer<? super A, ? super B, ? super C> after)
 	{
@@ -62,7 +59,6 @@ public interface TriConsumer<A, B, C>
 	 * @param <C> The type of third argument to the operation
 	 *
 	 * @return Returns a consumer that does nothing when applied
-	 * @since 1.0.0-J8
 	 */
 	static <A, B, C> TriConsumer<A, B, C> noop()
 	{

@@ -1,19 +1,19 @@
 package xyz.apex.java.utility.nullness;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.concurrent.Callable;
 
 /**
- * An alternative to {@link Callable} where the input must always be nonnull
+ * An alternative to {@link Callable} where the input must always be notnull
  *
  * @param <T> The type of the input to the operation
  *
  * @see Callable
- * @see Nonnull
- * @since 1.0.0-J8
+ * @see NotNull
  */
 @FunctionalInterface
-public interface NonnullCallable<@NonnullType T> extends Callable<T>
+public interface NotNullCallable<@NotNullType T> extends Callable<T>
 {
 	/**
 	 * {@inheritDoc}

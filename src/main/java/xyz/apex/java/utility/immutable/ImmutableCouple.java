@@ -13,7 +13,6 @@ import xyz.apex.java.utility.tuple.Pair;
  * @param <T> The base object type for both the <em>key {@literal &} value</em> elements.
  * @see Pair
  * @see Couple
- * @since 1.0.1-J8
  */
 public class ImmutableCouple<T> extends ImmutablePair<T, T> implements Couple<T>
 {

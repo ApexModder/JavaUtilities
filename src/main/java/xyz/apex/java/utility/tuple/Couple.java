@@ -8,7 +8,6 @@ import xyz.apex.java.utility.mutable.MutableCouple;
  *
  * @param <T> The base object type for both the <em>key {@literal &} value</em> elements.
  * @see Pair
- * @since 1.0.1-J8
  */
 public interface Couple<T> extends Pair<T, T>
 {
@@ -18,7 +17,6 @@ public interface Couple<T> extends Pair<T, T>
 	 * @param key The new <em>key</em> element value.
 	 * @return The old <em>key</em> element value.
 	 * @see Pair#setKey(Object)
-	 * @since 1.0.1-J8
 	 */
 	@Override T setKey(T key);
 
@@ -27,7 +25,6 @@ public interface Couple<T> extends Pair<T, T>
 	 *
 	 * @return The current <em>key</em> element value.
 	 * @see Pair#getKey()
-	 * @since 1.0.1-J8
 	 */
 	@Override T getKey();
 
@@ -37,7 +34,6 @@ public interface Couple<T> extends Pair<T, T>
 	 * @param value The new <em>value</em> element value.
 	 * @return The old <em>value</em> element value.
 	 * @see Pair#setValue(Object)
-	 * @since 1.0.1-J8
 	 */
 	@Override T setValue(T value);
 
@@ -46,7 +42,6 @@ public interface Couple<T> extends Pair<T, T>
 	 *
 	 * @return The current <em>value</em> element value.
 	 * @see Pair#getValue()
-	 * @since 1.0.1-J8
 	 */
 	@Override T getValue();
 
@@ -58,7 +53,6 @@ public interface Couple<T> extends Pair<T, T>
 	 * @param <T> The base object type for the <em>key/value</em> element.
 	 * @return {@link Couple} built from the given <em>key, value</em> elements.
 	 * @see MutableCouple
-	 * @since 1.0.1-J8
 	 */
 	static <T> Couple<T> create(T key, T value)
 	{
@@ -73,7 +67,6 @@ public interface Couple<T> extends Pair<T, T>
 	 * @return {@link Couple} built from the given <em>key, value</em> elements.
 	 * @see MutableCouple
 	 * @see #create(Object, Object)
-	 * @since 1.0.1-J8
 	 */
 	static <T> Couple<T> create(T value)
 	{
@@ -88,7 +81,6 @@ public interface Couple<T> extends Pair<T, T>
 	 * @param <T> The base object type for the <em>key/value</em> element.
 	 * @return {@link Couple} built from the given <em>key, value</em> elements.
 	 * @see ImmutableCouple
-	 * @since 1.0.1-J8
 	 */
 	static <T> Couple<T> createImmutable(T key, T value)
 	{
@@ -103,7 +95,6 @@ public interface Couple<T> extends Pair<T, T>
 	 * @return {@link Couple} built from the given <em>key, value</em> elements.
 	 * @see ImmutableCouple
 	 * @see #createImmutable(Object, Object)
-	 * @since 1.0.1-J8
 	 */
 	static <T> Couple<T> createImmutable(T value)
 	{

@@ -1,16 +1,9 @@
 {{#tags}}
 ## {{name}}
-{{#issues}}
-{{#hasIssue}}
-{{#hasLink}}
-### {{name}} [{{issue}}]({{link}}) {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
-{{/hasLink}}
-{{/hasIssue}}
 {{#commits}}
 * {{messageTitle}}
+{{#messageBodyItems}}
+	- {{.}}
+{{/messageBodyItems}}
 {{/commits}}
-{{/issues}}
-
 {{/tags}}
-
-*For more details, see [{last_tag}..v{prj_version}](https://github.com/ApexModder/JavaUtilities/compare/{last_tag}...v{prj_version})*

@@ -1,73 +1,80 @@
-# GitHub Action to auto-magically publish versions
-# for tagged commits
 name: release
 
-# Run on every push (with version tag)
 on:
   push:
     tags:
-      - 'v*'
+      - v*
 
 jobs:
   publish:
-    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        java: [ 17 ]
+
+    name: Publish
+    runs-on: ${{ matrix.os }}
 
     steps:
-      # Checkout repository & Setup JDK
-      - uses: actions/checkout@v2
-      - run: git fetch --prune --unshallow
-      - uses: actions/setup-java@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Unshallow Repository
+        run: git fetch --prune --unshallow
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
         with:
-          distribution: temurin
-          java-version: 17
+          distribution: adopt
+          java-version: ${{ matrix.java }}
 
-      # Setup & Restore caches
-      - uses: actions/cache@v2
+      - name: Setup Gradle Caching
+        uses: burrunan/gradle-cache-action@v1
         with:
-          path: |
-            ~/.gradle/caches
-            ./build
-          key: ${{ runner.os }}-gradle
+          job-id: java-${{ matrix.java }}
+          gradle-version: wrapper
+          save-generated-gradle-jars: true
+          save-local-build-cache: true
+          save-gradle-dependencies-cache: true
+          save-maven-dependencies-cache: true
 
-      - uses: actions/cache@v2
-        with:
-          path: ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-wrapper
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
 
-      # Validate Gradle Wrapper
-      - uses: gradle/wrapper-validation-action@v1
-      - run: chmod +x ./gradlew
+      - name: Give Gradle Execute Permissions
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: chmod +x ./gradlew
 
-      # Generate Changelog
-      - run: ./gradlew gitChangelogTask
+      - name: Generate Changelog File
+        run: ./gradlew gitChangelogTask
         env:
+          GENERATE_CHANGELOG: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Build package
-      - run: ./gradlew build
+      - name: Build Project JARs
+        run: ./gradlew build
 
-      # Upload artifacts to GitHub Actions
-      - uses: actions/upload-artifact@v3
+      - name: Upload Artifacts to GitHub Actions
+        uses: actions/upload-artifact@v3
         with:
-          name: build-artifacts
+          name: Project-Jars
           path: ./build/libs
 
-      # Upload changelog to GitHub Actions
-      - uses: actions/upload-artifact@v3
+      - name: Upload Changelog to GitHub Actions
+        uses: actions/upload-artifact@v3
         with:
-          name: changelog
+          name: Changelog
           path: ./CHANGELOG.md
 
-      # Publish to GitHub Packages
-      - run: ./gradlew publish
+      - name: Publish Project to Maven
+        run: ./gradlew publish
         env:
           APEX_MODS_MAVEN_USERNAME: ${{ secrets.APEX_MODS_MAVEN_USERNAME }}
           APEX_MODS_MAVEN_PASSWORD: ${{ secrets.APEX_MODS_MAVEN_PASSWORD }}
 
-      # Kill gradlew deamon (caching requires gradle to not be running)
-      - run: ./gradlew --stop
+      - name: Stop Gradle Deamons
+        run: ./gradlew --stop
 
-      # Remove problematic files
       - name: Cleanup Gradle Cache
         run: |
           rm -f ~/.gradle/caches/modules-2/modules-2.lock

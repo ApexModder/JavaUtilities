@@ -1,8 +1,8 @@
 package xyz.apex.java.utility.mutable;
 
-import xyz.apex.java.utility.tuple.Pair;
-import xyz.apex.java.utility.tuple.Quad;
-import xyz.apex.java.utility.tuple.Triple;
+import xyz.apex.java.utility.api.tuple.Pair;
+import xyz.apex.java.utility.api.tuple.Quad;
+import xyz.apex.java.utility.api.tuple.Triple;
 
 /**
  * Object containing 4 elements of differing types.

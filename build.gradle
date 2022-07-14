@@ -1,78 +1,89 @@
 plugins {
-	id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '1.71.8'
+	id 'java'
+	id 'eclipse'
+	id 'idea'
+	id 'maven-publish'
+
+	id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version "${git_changelog_version}"
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'maven-publish'
+group "${proj_group}"
+version "${proj_version}"
+archivesBaseName = "${proj_name}"
 
-group 'xyz.apex.java.utility'
-version '3.1.0-J17'
-archivesBaseName = 'JavaUtilities'
+sourceSets {
+	api {
+		java {
+			srcDirs = [ 'src/api/java' ]
+		}
+		resources {
+			srcDirs = [ 'src/api/resources' ]
+		}
+	}
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+	main {
+		compileClasspath += sourceSets.api.output
+		runtimeClasspath += sourceSets.api.output
+	}
+}
 
 repositories {
 	mavenCentral()
+	mavenLocal()
 	maven { url 'https://libraries.minecraft.net/' }
+	maven { url 'https://maven.apexmods.xyz/' }
 }
 
 dependencies {
-	implementation 'org.jetbrains:annotations:23.0.0'
-	implementation 'com.google.code.gson:gson:2.8.9'
-	implementation 'com.google.guava:guava:31.0.1-jre'
-	implementation 'commons-io:commons-io:2.11.0'
-	implementation 'commons-logging:commons-logging:1.2'
-	implementation 'org.apache.commons:commons-compress:1.21'
-	implementation 'org.apache.commons:commons-lang3:3.12.0'
-	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
-	implementation 'org.apache.httpcomponents:httpcore:4.4.14'
-	implementation 'org.apache.logging.log4j:log4j-api:2.17.1'
-	implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
-	implementation 'com.mojang:logging:1.0.0'
+	apiImplementation "org.jetbrains:annotations:${jetbrains_annotations_version}"
+	apiImplementation "com.google.code.gson:gson:${gson_version}"
+	apiImplementation "com.google.guava:guava:${guava_version}"
+	apiImplementation "commons-io:commons-io:${commons_io_version}"
+	apiImplementation "commons-logging:commons-logging:${commons_logging_version}"
+	apiImplementation "org.apache.commons:commons-compress:${commons_compress_version}"
+	apiImplementation "org.apache.commons:commons-lang3:${commons_lang_version}"
+	apiImplementation "org.apache.httpcomponents:httpclient:${http_client_version}"
+	apiImplementation "org.apache.httpcomponents:httpcore:${http_core_version}"
+	apiImplementation "org.apache.logging.log4j:log4j-api:${log4j_version}"
+	apiImplementation "org.apache.logging.log4j:log4j-core:${log4j_version}"
+	apiImplementation "com.mojang:logging:${mojang_logging_version}"
+
+	implementation "org.jetbrains:annotations:${jetbrains_annotations_version}"
+	implementation "com.google.code.gson:gson:${gson_version}"
+	implementation "com.google.guava:guava:${guava_version}"
+	implementation "commons-io:commons-io:${commons_io_version}"
+	implementation "commons-logging:commons-logging:${commons_logging_version}"
+	implementation "org.apache.commons:commons-compress:${commons_compress_version}"
+	implementation "org.apache.commons:commons-lang3:${commons_lang_version}"
+	implementation "org.apache.httpcomponents:httpclient:${http_client_version}"
+	implementation "org.apache.httpcomponents:httpcore:${http_core_version}"
+	implementation "org.apache.logging.log4j:log4j-api:${log4j_version}"
+	implementation "org.apache.logging.log4j:log4j-core:${log4j_version}"
 }
 
-task sourcesJar(type: Jar) {
-	classifier 'sources'
-	from sourceSets.main.allJava
-}
-
-task deobfJar(type: Jar) {
-	classifier 'deobf'
-	from sourceSets.main.output
-}
-
-artifacts {
-	archives jar
-	archives sourcesJar
-	archives deobfJar
-}
-
-jar {
-	from sourceSets.main.output.classesDirs
-	from sourceSets.main.output.resourcesDir
-}
-
-def previousGitTag = { ->
-	def code = new ByteArrayOutputStream()
-
-	exec {
-		commandLine 'git', 'describe', '--tags', '--match', 'v*', '--exclude', "v${project.version}"
-		standardOutput code
+java {
+	toolchain {
+		languageVersion.set(JavaLanguageVersion.of(java_version))
 	}
 
-	return code.toString().trim().split('-')[0]
+	withSourcesJar()
+	withJavadocJar()
 }
 
-task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
-	file = file("CHANGELOG.md")
-	fromRepo = file('.')
-	fromRef = "${previousGitTag}"
-	// toRef = "v${project.version}"
-	templateContent = file('.github/changelog.mustache').text
-			.replace('{prj_version}', "${project.version}")
-			.replace('{last_tag}', "${previousGitTag}")
+tasks.withType(Javadoc) {
+	def standardJavadocDocletOptions = options as StandardJavadocDocletOptions
+	standardJavadocDocletOptions.addStringOption('Xdoclint:none', '-quiet')
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+	options.release.set(JavaLanguageVersion.of(java_version).asInt())
+
+	javaToolchains {
+		compilerFor {
+			languageVersion.set(JavaLanguageVersion.of(java_version))
+		}
+	}
 }
 
 tasks.withType(Jar) {
@@ -81,32 +92,63 @@ tasks.withType(Jar) {
 
 	manifest {
 		attributes([
-				'Specification-Title': "${archivesBaseName}",
+				'Specification-Title': "${proj_name}",
 				'Specification-Vendor': 'Apex',
-				'Specification-Version': 'JAVA_17',
+				'Specification-Version': "JAVA_${java_version}",
 
-				'Implementation-Title': "${archivesBaseName}",
-				'Implementation-Version': "${project.version}",
+				'Implementation-Title': "${proj_name}",
+				'Implementation-Version': "${proj_version}",
 				'Implementation-Vendor' : 'Apex',
 				'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
 		])
 	}
 }
 
-if(System.getenv('APEX_MODS_MAVEN_USERNAME') != null && System.getenv('APEX_MODS_MAVEN_PASSWORD') != null) {
-	publishing {
-		publications {
-			mavenJava(MavenPublication) {
-				groupId "${group}"
-				artifactId "${archivesBaseName.toLowerCase(Locale.ROOT)}"
-				version "${version.toLowerCase(Locale.ROOT)}"
+artifacts {
+	archives tasks.jar
+	archives tasks.sourcesJar
+	archives tasks.javadocJar
+}
 
-				artifact jar
-				artifact sourcesJar
-				artifact deobfJar
-			}
+def previousGitTag = { ->
+	try {
+		def code = new ByteArrayOutputStream()
+
+		exec {
+			commandLine 'git', 'describe', '--abbrev=0', '--tags', '--exclude', "v${proj_version}"
+			standardOutput code
 		}
-		repositories {
+
+		return code.toString().trim()
+	} catch(e) {
+		return ''
+	}
+}
+
+task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
+	file = file("CHANGELOG.md")
+	fromRepo = file('.')
+	fromRef = "${previousGitTag}"
+	templateContent = file('.github/changelog.mustache').text
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			groupId "${proj_group}"
+			artifactId "${proj_name}"
+			version "${proj_version}"
+
+			artifact tasks.jar
+			artifact tasks.sourcesJar
+			artifact tasks.javadocJar
+		}
+	}
+
+	repositories {
+		mavenLocal()
+
+		if(System.getenv('APEX_MODS_MAVEN_USERNAME') != null && System.getenv('APEX_MODS_MAVEN_PASSWORD') != null) {
 			maven {
 				name 'ApexMods-Maven'
 				url 'https://apexmodder.jfrog.io/artifactory/mods-maven/'

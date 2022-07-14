@@ -1,7 +1,7 @@
 package xyz.apex.java.utility.immutable;
 
-import xyz.apex.java.utility.tuple.Couple;
-import xyz.apex.java.utility.tuple.Pair;
+import xyz.apex.java.utility.api.tuple.Couple;
+import xyz.apex.java.utility.api.tuple.Pair;
 
 /**
  * Pair of 2 objects which have the same base type.

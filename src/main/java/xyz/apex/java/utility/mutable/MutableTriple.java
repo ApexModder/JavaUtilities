@@ -1,7 +1,7 @@
 package xyz.apex.java.utility.mutable;
 
-import xyz.apex.java.utility.tuple.Pair;
-import xyz.apex.java.utility.tuple.Triple;
+import xyz.apex.java.utility.api.tuple.Pair;
+import xyz.apex.java.utility.api.tuple.Triple;
 
 /**
  * Object containing 3 elements of differing types.

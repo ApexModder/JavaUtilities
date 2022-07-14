@@ -1,6 +1,6 @@
 package xyz.apex.java.utility.mutable;
 
-import xyz.apex.java.utility.tuple.Pair;
+import xyz.apex.java.utility.api.tuple.Pair;
 
 /**
  * Pair of 2 objects which have differing base types.

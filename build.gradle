@@ -70,6 +70,48 @@ java {
 	withJavadocJar()
 }
 
+task apiJavadoc(type: Javadoc) {
+	source = sourceSets.api.allJava
+	classpath = sourceSets.api.compileClasspath
+}
+
+tasks.javadoc {
+	source += [ sourceSets.api.allJava, sourceSets.main.allJava ]
+	dependsOn tasks.apiJavadoc
+	classpath = sourceSets.main.compileClasspath
+}
+
+task apiJar(type: Jar, dependsOn: classes) {
+	classifier 'api'
+	from sourceSets.api.output.classesDirs
+	from sourceSets.api.output.resourcesDir
+}
+
+task apiSourcesJar(type: Jar, dependsOn: classes) {
+	classifier 'api-sources'
+	from sourceSets.api.allJava
+	from sourceSets.api.resources
+}
+
+task apiJavadocJar(type: Jar, dependsOn: apiJavadoc) {
+	classifier 'api-javadoc'
+	from tasks.apiJavadoc
+}
+
+tasks.jar {
+	from sourceSets.api.output.classesDirs
+	from sourceSets.api.output.resourcesDir
+}
+
+tasks.sourcesJar {
+	from sourceSets.api.allJava
+	from sourceSets.api.resources
+}
+
+tasks.javadocJar {
+	dependsOn tasks.apiJavadocJar
+}
+
 tasks.withType(Javadoc) {
 	def standardJavadocDocletOptions = options as StandardJavadocDocletOptions
 	standardJavadocDocletOptions.addStringOption('Xdoclint:none', '-quiet')
@@ -108,6 +150,9 @@ artifacts {
 	archives tasks.jar
 	archives tasks.sourcesJar
 	archives tasks.javadocJar
+	archives tasks.apiJar
+	archives tasks.apiSourcesJar
+	archives tasks.apiJavadocJar
 }
 
 def previousGitTag = { ->
@@ -142,6 +187,9 @@ publishing {
 			artifact tasks.jar
 			artifact tasks.sourcesJar
 			artifact tasks.javadocJar
+			artifact tasks.apiJar
+			artifact tasks.apiSourcesJar
+			artifact tasks.apiJavadocJar
 		}
 	}
 
